@@ -1,0 +1,240 @@
+
+*{
+    font-family: "Raleway"
+}
+
+  h1,h2,button,p{
+    font-family: "Raleway"
+  }
+
+.Infos{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 9px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 2px solid var(--cor-de-fundo);;
+    background: url(../Imgs/pokeball2.png);
+    background-size: 24rem;
+    background-position: center;
+    background-repeat:no-repeat;
+    background-color: rgb(255, 255, 255);
+
+}
+
+.Infos img{
+  background-color: rgb(243, 243, 243);
+  
+  transform: scale(1.1)
+}
+.img{
+  display: flex;
+  margin: 15px;
+  flex-direction: column;
+   border: 3px solid rgb(255, 255, 255);  
+  border-radius: 9px;
+  align-items: center;
+  animation-name: example;
+  animation-duration: 1s;
+  background: url(../Imgs/pokeball.png);
+    /* background-repeat: no-repeat; */
+    background-position: center;
+    background-repeat: repeat-x;
+    background-color: rgb(65, 65, 65);
+  
+}
+.img img{
+  display: flex;
+  margin: 30px;
+  height: 150px;
+  width: 150px;
+  border: 3px double rgb(255, 255, 255);
+  border-radius: 9px;
+ 
+  
+}
+
+.img button{
+  display: flex;
+  margin: 10px;
+  
+}
+
+
+.stats{
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  border: 2px solid rgb(221, 16, 16);
+  border-radius: 9px;
+  padding-left: 15px;
+  box-shadow: 10px 10px lightblue;
+  align-items: first baseline;
+  background: url(../Imgs/pokeball2.png);
+  background-size: 20rem;
+  background-position: right;
+  background-repeat: no-repeat;
+  background-color: rgb(253, 253, 253);
+  padding-left: 50px;
+  margin: 20px;
+}
+.StatsBaseBar{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+
+}
+.BaseStats{
+  width:4rem;
+  background-color: transparent;
+  
+}
+.StatsName{
+  width: 13rem;
+  background-color: transparent;
+}
+
+.ability, .Types,.habitat,.Evolução{
+  margin: 10px;
+  padding: 30px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  border-radius: 9px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content:space-around;
+  font-weight: bold;
+  color: white;
+  background: url(../Imgs/pokeball.png);
+    background-size: 6rem;
+    background-position: center;
+    background-repeat:no-repeat;
+    background-color: rgb(65, 65, 65);
+}
+
+.Types{
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top:30px;
+    padding-bottom:30px
+}
+.habitat{
+    padding-top:90px;
+    padding-bottom:90px
+}
+.NavLink2{
+  color: white;
+  
+}
+.NavLink2:hover{
+  border: 2px solid white;
+  border-radius: 9px;
+}
+.Types button{
+  margin: 0.3rem;
+  
+}
+
+@keyframes example {
+  0%   {margin-left: 250px;}
+  100% {}
+}
+@keyframes down {
+  0%   {margin-top: 200px;}
+  100% {}
+}
+@media only screen and (max-width: 750px) {
+  .Infos{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px lightblue;
+    justify-content: space-around;
+    align-items: center;
+    justify-self: center;
+    background-repeat:no-repeat;
+    background-size: 15rem;
+  
+    
+    margin: 0px;
+    
+}
+.img{
+  display: flex;
+  margin: 15px;
+  padding: 40px;
+  flex-direction: column;
+  border: 3px solid rgb(255, 255, 255);  
+  border-radius: 9px;
+  align-items: center;
+  animation-name: example;
+  animation-duration: 1s;
+  background: url(../Imgs/pokeball.png);
+    /* background-repeat: no-repeat; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgb(65, 65, 65);
+  
+}
+.img img{
+  
+  display: flex;
+  margin: 20px;
+  height: 190px;
+  width: 160px;
+
+}
+
+.img button{
+  display: flex;
+  flex-direction: row;
+  margin: 15px;
+  
+}
+
+.stats{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content:space-around;
+  font-weight: bold;
+  animation-name: example;
+  animation-duration: 1s;
+  margin-top: 35px;
+  margin: 20px;
+}
+
+.BarraDeFundo{
+  width: 50px;
+}
+.Types button{
+  margin: 0.5rem;
+}
+.stats{
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  margin-top: 20px;
+}
+.StatsBaseBar{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.BaseStats,.StatsName{
+  width: 5rem;
+  
+}
+  .BarraDeFundo{
+    display: flex;
+    
+  }
+  }
