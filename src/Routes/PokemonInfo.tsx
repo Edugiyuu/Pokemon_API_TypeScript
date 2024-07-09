@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, NavLink, useParams } from 'react-router-dom';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Tooltip } from 'recharts'; 'recharts';
 import '../Styles/PokemonInfo.css';
+
 interface Stats {
   base_stat: number;
   stat: {
@@ -131,7 +132,6 @@ function PokemonInfo() {
 
   return (
     <>
-
       {pokemonInfo && (
         <div>
           <div style={{
@@ -142,21 +142,21 @@ function PokemonInfo() {
           /*   backgroundColor: `${pokemonSpecies?.color.name}`, */
             display: 'flex',
             borderRadius: '9px',
-            border:'2px dashed rgb(0, 0, 0)',
+            border:'2px solid rgb(0, 0, 0)',
             justifyContent: 'start', alignItems: 'start',
          
           }}>
+            
             <h1 style={{
               marginRight: '30px',
               marginLeft: '50px',
-              fontWeight: 'normal',
-              letterSpacing: '6px',
-              fontFamily:'DotGothic16'
+            
+              letterSpacing: '4px', 
             }}>
               {pokemonInfo?.name}
             </h1>
             <img style={{ 
-      transform: 'scale(1.6)', /* Ajuste o valor para aumentar/diminuir o ícone */
+      transform: 'scale(1.6)', 
 
     }} src={pokemonInfo.sprites.versions["generation-viii"].icons.front_default} alt="" />
           </div>
@@ -207,7 +207,7 @@ function PokemonInfo() {
 
               <h2>Stats base:</h2>
 
-              <RadarChart width={700} height={350} data={data2}>
+              <RadarChart width={750} height={400} data={data2}>
                 <PolarGrid />
                 <PolarAngleAxis dataKey="name" />
                 <PolarRadiusAxis />

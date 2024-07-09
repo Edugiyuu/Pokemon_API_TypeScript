@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { TypeAnimation } from 'react-type-animation';
 
 // video: https://www.youtube.com/watch?v=0ZJgIjIuY7U&ab_channel=WebDevSimplified
 interface NatureNameURL {
@@ -49,7 +50,22 @@ const NaturePage = () => {
         
         <div className="Titulo">
           
-             <h1>Procurando uma nature?</h1>
+          <TypeAnimation
+            sequence={[
+              'Procurando uma nature?',
+              10000,
+              'Que tal a nature modest?',
+              2000,
+              'Brave talvez?',
+              2000,
+
+            ]}
+            wrapper="span"
+            speed={35}
+            style={{ fontFamily: "Raleway", fontSize: '2em', fontWeight: 'bold', display: 'inline-block', margin: '20px' }}
+            repeat={Infinity}
+          />
+
             <div className="pesquisar">
               <input placeholder="Escreva a nature em ingles :)" type="text"value={procurarPokemon} onChange={(pokemonProcurado) => setProcurarPokemon(pokemonProcurado.target.value)}/>
               <button  onClick={pokemonPesquisado}>
@@ -78,7 +94,7 @@ const NaturePage = () => {
             <div className='confirm-container'>
              <h2>Quer ver mais sobre {pokemonNature}?</h2>
               <NavLink className={'NavLink'} to={`/pokemon/nature/${pokemonNature}`}>Sim</NavLink>
-              <button onClick={() => OpenClose()} >Não</button>
+              <button className="DeclineButton" onClick={() => OpenClose()} >Não</button>
             </div>
           </div>
         )}

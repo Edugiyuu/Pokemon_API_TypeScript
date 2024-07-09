@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { TypeAnimation } from 'react-type-animation';
 
 // video: https://www.youtube.com/watch?v=0ZJgIjIuY7U&ab_channel=WebDevSimplified
 interface PokemonResult {
@@ -45,6 +46,7 @@ const Pokemons = () => {
         setPokemonInfo(parsedResponse);
       })
   }, [pokemonTotal]);
+  
   useEffect(() => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNome}`)
       .then((response) => response.json())
@@ -81,8 +83,23 @@ const Pokemons = () => {
         <header className="App-header">
         
         <div className="Titulo">
-          
-            <h1>Escolha seu Pokemon</h1>
+          <TypeAnimation
+            sequence={[
+              // Same substring at the start will only be typed out once, initially
+              'Escolha seu Pokémon',
+              10000, 
+              'Saiba mais sobre os Pokémon',
+              4000,
+              'Ou Pesquise por um Pokémon',
+              2000,
+             
+            ]}
+            wrapper="span"
+            speed={30}
+            style={{fontFamily: "Raleway",fontSize: '2em',fontWeight: 'bold', display: 'inline-block',margin:'20px'}}
+            repeat={Infinity}
+          />
+            
             <div className="pesquisar">
               <input placeholder="Procurando um Pokemon?" type="text"value={procurarPokemon} onChange={(pokemonProcurado) => setProcurarPokemon(pokemonProcurado.target.value)}/>
               <button className="Procurar" onClick={pokemonPesquisado}>
@@ -118,8 +135,8 @@ const Pokemons = () => {
               <img src={pokemonImg.other?.["official-artwork"].front_default} alt="" />
              )}
               
-              <NavLink to={`/pokemon/${pokemonNome}`}>Sim</NavLink>
-              <button onClick={OpenClose} >Não</button>
+              <NavLink className={"NavLink"} to={`/pokemon/${pokemonNome}`}>Sim</NavLink>
+              <button className="DeclineButton" onClick={OpenClose} >Não</button>
             </div>
           </div>
         )}

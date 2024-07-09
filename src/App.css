@@ -21,7 +21,7 @@ html {
 }
 
 body {
-  margin: 1.5rem;
+  margin: 1rem;
   animation: corDeFundo 2s infinite;
 }
 
@@ -221,27 +221,37 @@ hr {
     background-position: center;
     background-repeat: repeat-x;
     background-color: rgb(216, 40, 40);
-   
+    
 }
 
-.Menu img, .NavLink{
-  background: url(../Imgs/pokeball2.png);
-    /* background-repeat: no-repeat; */
-    background-position: center;
+.NavLink{
+    background: url(../Imgs/pokeball2.png);
+    /*background-repeat: no-repeat;
+    */background-position: center;
     background-repeat: repeat-x;
     background-color: rgb(216, 40, 40);
-    color: rgb(255, 255, 255); 
+    color: rgb(255, 255, 255);
+    padding-left:28px;
+    padding-right:28px;
+    padding-bottom: 13px;
+    padding-top: 13px;
+    border-radius: 3px;
+    
+}
+.Menu img{
+  background: url(../Imgs/pokeball2.png);
+    /*background-repeat: no-repeat;
+    */background-position: center;
+    background-repeat: repeat-x;
+    background-color: rgb(216, 40, 40);
+    color: rgb(255, 255, 255);
+}
+.DeclineButton{
+  background-color: rgb(216, 40, 40);
+  margin-top: 20px;
 }
 
 
-/* .ability, .habitat{
-  border: 2px solid rgb(221, 16, 16);
-  border-radius: 9px;
-  padding: 20px;
-  box-shadow: 8px 8px lightblue;
-  
-  
-} */
 .Procurar:hover{
   background: url(./img/lupa.png);
   background-size: 50px;

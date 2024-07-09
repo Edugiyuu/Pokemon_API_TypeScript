@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { TypeAnimation } from 'react-type-animation';
 
 
 // video: https://www.youtube.com/watch?v=0ZJgIjIuY7U&ab_channel=WebDevSimplified
@@ -49,7 +50,21 @@ const TypePage = () => {
 
                 <div className="Titulo">
 
-                    <h1>Procurando um tipo?</h1>
+                    <TypeAnimation
+                        sequence={[
+                            'Procurando um tipo?',
+                            10000,
+                            'Que tal o tipo fogo?',
+                            2000,
+                            'Tipo grama talvez?',
+                            2000,
+
+                        ]}
+                        wrapper="span"
+                        speed={35}
+                        style={{ fontFamily: "Raleway", fontSize: '2em', fontWeight: 'bold', display: 'inline-block', margin: '20px' }}
+                        repeat={Infinity}
+                    />
                     <div className="pesquisar">
                         <input placeholder="Escreva o tipo em ingles :)" type="text" value={procurarPokemon} onChange={(pokemonProcurado) => setProcurarPokemon(pokemonProcurado.target.value)} />
                         <button onClick={typePesquisado}>
@@ -77,8 +92,8 @@ const TypePage = () => {
 
                     <div className='confirm-container'>
                         <h2>Quer ver mais sobre {type}?</h2>
-                        <NavLink to={`/pokemon/type/${type}`}>Sim</NavLink>
-                        <button onClick={() => OpenClose()} >Não</button>
+                        <NavLink className={"NavLink"} to={`/pokemon/type/${type}`}>Sim</NavLink>
+                        <button className="DeclineButton" onClick={() => OpenClose()} >Não</button>
                     </div>
                 </div>
             )}

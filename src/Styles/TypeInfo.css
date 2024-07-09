@@ -1,0 +1,85 @@
+
+
+.MainType {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center; 
+  margin-top: 40px;
+  padding-top: 30px;
+  padding-bottom: 40px;
+  border: 4px dashed black;
+  /* background: url(../Imgs/grass.png) center center/cover repeat; */
+  background-size: 100px;
+  
+}
+.defenseHeader {
+  text-align: center;
+  margin-top: 40px;
+}
+
+
+.defInfo, .ataqInfo,.Efetivo, .NaoEfetivo,.SuperEfetivo{
+    padding: 25px;
+    animation-name: example;
+    animation-duration: 0.4s;
+    margin: 0px;
+    
+}
+
+.ataqInfo,.defInfo{
+  display: flex;
+  
+  background-color: white;
+}
+.Efetivo{
+  padding: 30px;
+  flex: 1;
+  background-color: rgba(114, 255, 49, 0.493);
+  border-right: 4px solid black;
+
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.Resistencias{
+  padding: 30px;
+  flex: 1;
+  background-color: rgba(114, 255, 49, 0.384);
+  border-left: 4px solid black;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+}
+
+.NaoEfetivo{
+  padding: 30px;
+  flex: 1;
+  background-color: rgba(255, 49, 49, 0.473);
+  
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  
+}
+.Fraquesas{
+  padding: 30px;
+  flex: 1;
+  background-color: rgba(255, 49, 49, 0.473);
+  
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  
+}
+
+.MainIcon:hover,.double_damage_from:hover,.half_damage_from:hover{
+  transform: scale(1.1);
+  transition:0.3s;
+  background: var(--cor-de-fundo);
+  border-radius: 10px;
+
+}
+  
+  .SuperEfetivo img, .NaoEfetivo img,.defInfo img, .ataqInfo img {
+    height: 70px;
+    margin: 15px;
+  }
