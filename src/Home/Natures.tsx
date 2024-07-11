@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { TypeAnimation } from 'react-type-animation';
+import useOpenClose from "../Hooks/useOpenClose";
 
 // video: https://www.youtube.com/watch?v=0ZJgIjIuY7U&ab_channel=WebDevSimplified
 interface NatureNameURL {
@@ -14,7 +15,7 @@ interface AllNatures {
 const NaturePage = () => {
   const [pokemonNatures, setPokemonNatures] = useState<AllNatures>();
   const [pokemonNature, setPokemonNature] = useState("");
-  const [confirmNature, setConfirmNature] = useState(false);
+  const [confirmNature, changeBoolean] = useOpenClose(false);
 
   useEffect(() => {
     fetch(`https://pokeapi.co/api/v2/nature/?limit=25`)
@@ -28,16 +29,9 @@ const NaturePage = () => {
 
   function handleClick(pokemonNature:string) {
     setPokemonNature(pokemonNature);
-    setConfirmNature(true);
+    changeBoolean();
   }
 
-  function OpenClose() {
-    setConfirmNature(true);
-    if (confirmNature === true) {
-      setConfirmNature(false)
-    }
-
-  }
   const [procurarPokemon, setProcurarPokemon] = useState('');
   const pokemonPesquisado= () => {
     window.location.href = `/pokemon/nature/${procurarPokemon.toLowerCase()}`;
@@ -94,7 +88,7 @@ const NaturePage = () => {
             <div className='confirm-container'>
              <h2>Quer ver mais sobre {pokemonNature}?</h2>
               <NavLink className={'NavLink'} to={`/pokemon/nature/${pokemonNature}`}>Sim</NavLink>
-              <button className="DeclineButton" onClick={() => OpenClose()} >Não</button>
+              <button className="DeclineButton" onClick={changeBoolean} >Não</button>
             </div>
           </div>
         )}

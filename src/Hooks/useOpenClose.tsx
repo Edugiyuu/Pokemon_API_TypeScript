@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-const useOpenClose = (inicio: boolean,) => {
-  const [isOpen, setIsOpen] = useState(inicio);
+function useOpenClose(initialState: boolean): [boolean, () => void] {
+  const [isOpen, setIsOpen] = useState(initialState);
 
-  const toggle = () => {
+  function changeBoolean() {
     setIsOpen(!isOpen);
-  };
+  }
 
-  return [isOpen, toggle];
-};
+  return [isOpen, changeBoolean];
+}
 
 export default useOpenClose;

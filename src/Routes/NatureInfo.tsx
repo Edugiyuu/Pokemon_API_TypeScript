@@ -36,7 +36,8 @@ function NatureInfo() {
            <h3>A nature {params.nature} diminui:</h3>
            <p>{nature.decreased_stat.name}</p>
          </div>
-            <div className="StatsUp">
+            <div className="StatsUp" style={{ background: `#ffffff --img-grass center center/cover repeat` }}>
+
               <h3>Mas aumenta:</h3>
              <p>{nature.increased_stat.name}</p>
             </div> 

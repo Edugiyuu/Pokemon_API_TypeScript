@@ -1,5 +1,30 @@
 
-
+:root {
+  --img-grass: url('../Imgs/grass.png');
+  --img-fire: url('../Imgs/fire.png');
+  --img-electric: url('../Imgs/electric.png');
+  --img-dragon: url('../Imgs/dragon.png');
+  --img-water: url('../Imgs/water.png');
+/* ----------------------------------------- */
+  --img-fighting: url('../Imgs/Backgrounds/fighting.png');
+  --img-electric: url('../Imgs/Backgrounds/electric.png');
+  --img-psychic: url('../Imgs/Backgrounds/psychic.png');
+  --img-dragon: url('../Imgs/Backgrounds/dragon.png');
+  --img-flying: url('../Imgs/Backgrounds/flying.png');
+  --img-ghost: url('../Imgs/Backgrounds/ghost.png');
+  --img-dark: url('../Imgs/Backgrounds/dark.png');
+  --img-poison: url('../Imgs/Backgrounds/poison.png');
+  --img-normal: url('../Imgs/Backgrounds/normal.png');
+  --img-rock: url('../Imgs/Backgrounds/rock.png');
+  --img-fairy: url('../Imgs/Backgrounds/fairy.png');
+  --img-water: url('../Imgs/Backgrounds/water.png');
+  --img-ground: url('../Imgs/Backgrounds/ground.png');
+  --img-steel: url('../Imgs/Backgrounds/steel.png');
+  --img-ice: url('../Imgs/Backgrounds/ice.png');
+  --img-grass: url('../Imgs/Backgrounds/grass.png');
+  --img-bug: url('../Imgs/Backgrounds/bug.png');
+  --img-fire: url('../Imgs/Backgrounds/fire.png');
+}
 .MainType {
   display: flex;
   flex-direction: column;
@@ -7,12 +32,25 @@
   justify-content: center;
   text-align: center; 
   margin-top: 40px;
-  padding-top: 30px;
-  padding-bottom: 40px;
-  border: 4px dashed black;
-  /* background: url(../Imgs/grass.png) center center/cover repeat; */
-  background-size: 100px;
-  
+  padding-top: 35px;
+  padding-bottom: 35px;
+  border: 4px solid black;
+}
+.SubMainType{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  border-radius: 60px;
+  border: 4px solid black;
+  color: rgb(255, 255, 255);
+  background-color: rgb(29, 27, 27);
+  -webkit-border-radius: 60px;
+  -moz-border-radius: 60px;
+  -ms-border-radius: 60px;
+  -o-border-radius: 60px;
 }
 .defenseHeader {
   text-align: center;

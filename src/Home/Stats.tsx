@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import { TypeAnimation } from 'react-type-animation';
+import useOpenClose from '../Hooks/useOpenClose';
 
 interface Stat {
     name: string;
@@ -14,13 +15,8 @@ interface Stat {
 const Stats = () => {
     const [stats,setStats] = useState<StatsResults>({ results: [] })
     const [statName,setStatName] = useState('')
-    const [confirmStat, setConfirmStat] = useState(false);
-    function OpenClose() {
-        setConfirmStat(true);
-        if (confirmStat === true) {
-          setConfirmStat(false)
-        }
-      }
+    const [confirmStat, changeBoolean] = useOpenClose(false);
+
     useEffect(() => {
         fetch(`https://pokeapi.co/api/v2/stat/`)
           .then((response) => response.json())
@@ -33,7 +29,7 @@ const Stats = () => {
 
       function handleClick(stat: string) {
         setStatName(stat)
-        setConfirmStat(true);
+        changeBoolean();
       }
   return (
     <div>
@@ -66,9 +62,8 @@ const Stats = () => {
             <div className='confirm-container'>
              <h2>Quer ver mais sobre {statName}?</h2>
           
-              
               <NavLink className={'NavLink'} to={`/pokemon/stat/${statName}`}>Sim</NavLink>
-              <button className="DeclineButton" onClick={OpenClose} >Não</button>
+              <button className="DeclineButton" onClick={changeBoolean} >Não</button>
             </div>
           </div>
         )}
