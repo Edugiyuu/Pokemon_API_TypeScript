@@ -16,49 +16,49 @@
     border-radius: 9px;
     margin-left: 20px;
     margin-right: 20px;
-    border: 2px solid var(--cor-de-fundo);;
+    border: 2px solid #3F4753;
     background: url(../Imgs/pokeball2.png);
     background-size: 24rem;
     background-position: center;
     background-repeat:no-repeat;
-    background-color: rgb(255, 255, 255);
+    padding: 15px;
 
 }
 
-.Infos img{
-  background-color: rgb(243, 243, 243);
-  
-  transform: scale(1.1)
-}
-.img{
+
+.img {
   display: flex;
-  margin: 15px;
+  margin-right: 30px;
+  
   flex-direction: column;
-   border: 3px solid rgb(255, 255, 255);  
   border-radius: 9px;
   align-items: center;
   animation-name: example;
   animation-duration: 1s;
-  background: url(../Imgs/pokeball.png);
-    /* background-repeat: no-repeat; */
-    background-position: center;
-    background-repeat: repeat-x;
-    background-color: rgb(65, 65, 65);
-  
+  background: url('../Imgs/CardFrames/image.png') no-repeat center center;
+  background-color: transparent;
+  background-size:contain;
+  width: 358px;
+  height: 470px; 
+  padding: 70px;
 }
-.img img{
+.pokemon-img{
   display: flex;
-  margin: 30px;
-  height: 150px;
-  width: 150px;
-  border: 3px double rgb(255, 255, 255);
-  border-radius: 9px;
+
+  margin-top: -50px;
  
-  
+  margin-bottom: 95px;
+  height: 200px;
+  width: 200px;
+  border-radius: 9px;
+  background-color: transparent;
 }
+
 
 .img button{
   display: flex;
+  background-color: #3F4753;
+  color: white;
   margin: 10px;
   
 }
@@ -175,17 +175,16 @@
   align-items: center;
   animation-name: example;
   animation-duration: 1s;
-  background: url(../Imgs/pokeball.png);
-    /* background-repeat: no-repeat; */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: rgb(65, 65, 65);
-  
+   background: url('../Imgs/CardFrames/image.png') no-repeat center center;
+  background-color: transparent;
+  background-size:contain;
 }
-.img img{
+.pokemon-img{
   
   display: flex;
   margin: 20px;
+  margin-bottom: 100px;
+  margin-top: 10px;
   height: 190px;
   width: 160px;
 

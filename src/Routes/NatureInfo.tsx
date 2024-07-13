@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams} from "react-router-dom";
 import '../Styles/NatureInfo.css'
-
 interface UpAndDowns{
     name:string,
     url:string
@@ -30,21 +29,30 @@ function NatureInfo() {
         <h2>Nature: {params.nature}</h2>
       </div>
       
-      {nature?.decreased_stat &&(
+      {nature?.decreased_stat !== null ?(
         <div className="StatInfo">
          <div className="StatsDown">
-           <h3>A nature {params.nature} diminui:</h3>
-           <p>{nature.decreased_stat.name}</p>
+           <h2>A nature {params.nature} diminui:</h2>
+           <p>{nature?.decreased_stat.name}</p>
          </div>
-            <div className="StatsUp" style={{ background: `#ffffff --img-grass center center/cover repeat` }}>
+            <div className="StatsUp" style={{background:''}}>
 
-              <h3>Mas aumenta:</h3>
-             <p>{nature.increased_stat.name}</p>
+              <h2>Mas aumenta:</h2>
+             <p>{nature?.increased_stat.name}</p>
             </div> 
             
         </div>
         
-      )}
+      ):(
+
+
+         <div className="NullStat" style={{background: "nullImg"}}>
+        
+          <h2>Essa Nature não diminui nem aumenta stats.</h2>
+
+         </div>
+        )
+      }
         
 
     

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useParams } from 'react-router-dom';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Tooltip } from 'recharts'; 'recharts';
+import image from '../Imgs/CardFrames/image.png'
 import '../Styles/PokemonInfo.css';
 
 interface Stats {
@@ -21,6 +22,10 @@ interface OtherSprites {
     back_default: string;
     front_default: string;
   };
+  home:{
+  
+    front_default: string;
+  }
 }
 
 interface Ability {
@@ -63,7 +68,7 @@ interface PokemonSpecies {
     url: string
   }
   habitat: {
-    name: string,
+    name: string | null,
     url: string
   }
   evolves_from_species: {
@@ -86,7 +91,6 @@ function PokemonInfo() {
     fetch(`https://pokeapi.co/api/v2/pokemon/${params.name}`)
       .then((response) => response.json())
       .then((parsedResponse) => {
-        console.log(parsedResponse);
         setPokemonInfo(parsedResponse);
 
       })
@@ -96,10 +100,8 @@ function PokemonInfo() {
     fetch(`https://pokeapi.co/api/v2/pokemon-species/${params.name}`)
       .then((response) => response.json())
       .then((parsedResponse) => {
-        console.log(parsedResponse);
-        if (parsedResponse !== undefined) {
-          setPokemonSpecies(parsedResponse)
-        }
+
+        setPokemonSpecies(parsedResponse)
 
       })
       .catch((error) => console.error("Error", error));
@@ -163,8 +165,8 @@ function PokemonInfo() {
 
           <div className="Infos">
             {pokemonInfo.sprites && pokemonSpecies?.color && (
-              <div /* style={{border: `3px solid ${pokemonSpecies.color.name}`}}  */ className="img">
-                <img src={pokemonInfo.sprites.other.showdown.front_default} alt="" />
+              <div className="img">
+                <img className='pokemon-img'src={pokemonInfo.sprites.other.home.front_default} alt="" />
 
                 <button onClick={mudarSpriteNormal}>Mudar Sprite</button>
                 <button onClick={mudarSpriteShiny}>Versão Shiny</button>
@@ -189,12 +191,18 @@ function PokemonInfo() {
             {pokemonSpecies?.color && (
               <div className="habitat">
                 <h2>Habitat:</h2>
-                <div>{pokemonSpecies.habitat.name}</div>
+                {/* se for diferente de null ele mostra normal mas se for null ele mostra indisponivel */}
+                {pokemonSpecies.habitat !== null ? (
+                  <div>{pokemonSpecies.habitat.name}</div>
+                ) : (
+                  <div>Habitat não disponível</div>
+                )}
+
               </div>
             )}
             {pokemonSpecies?.evolves_from_species && (
               <div className="Evolução">
-                <h3 >Evolução anterior</h3>
+                <h2 >Evolução anterior</h2>
                 <Link className={'NavLink2'} to={`/pokemon/${pokemonSpecies.evolves_from_species.name}`} >{pokemonSpecies.evolves_from_species.name}</Link>
               </div>
             )}

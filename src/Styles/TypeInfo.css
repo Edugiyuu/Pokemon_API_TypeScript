@@ -24,6 +24,12 @@
   --img-grass: url('../Imgs/Backgrounds/grass.png');
   --img-bug: url('../Imgs/Backgrounds/bug.png');
   --img-fire: url('../Imgs/Backgrounds/fire.png');
+  --img-null: url('../Imgs/Backgrounds/null.png');
+  --img-debuff: url('../Imgs/Backgrounds/debuff.png');
+  --img-buff: url('../Imgs/Backgrounds/buff.png');
+}
+*{
+  font-family: "Raleway"
 }
 .MainType {
   display: flex;
@@ -72,49 +78,82 @@
   background-color: white;
 }
 .Efetivo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 30px;
   flex: 1;
-  background-color: rgba(114, 255, 49, 0.493);
-  border-right: 4px solid black;
+  background-color: rgba(71, 207, 8, 0.384);
+   border: 3px solid black;
 
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  background-image: var(--img-buff);
+  background-position: center center;
+  background-size: 150px;
 }
+
 .Resistencias{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 30px;
   flex: 1;
-  background-color: rgba(114, 255, 49, 0.384);
-  border-left: 4px solid black;
+  background-color: rgba(71, 207, 8, 0.384);
+  border: 3px solid black;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+  background-image: var(--img-buff);
 
+  background-position: center center;
+  background-size: 150px;
 }
 
 .NaoEfetivo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 30px;
   flex: 1;
   background-color: rgba(255, 49, 49, 0.473);
-  
+  border: 3px solid black;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+  background-image: var(--img-debuff);
+  background-position: center center;
+  background-size: 150px;
   
 }
 .Fraquesas{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 30px;
   flex: 1;
   background-color: rgba(255, 49, 49, 0.473);
-  
+  border: 3px solid black;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  background-image: var(--img-debuff);
+  background-position: center center;
+  background-size: 150px;
   
 }
+.FraquesasDentro,.NaoEfetivoDentro,.EfetivoDentro,.ResistenciasDentro{
+  border: 4px solid black;
+  border-radius: 20px;
 
-.MainIcon:hover,.double_damage_from:hover,.half_damage_from:hover{
-  transform: scale(1.1);
+  background-color: rgb(29, 27, 27);
+  color: white;
+  font-family: "Raleway";
+  text-align: center;
+}
+
+.MainIcon:hover,.double_damage_from:hover,.half_damage_from:hover,.half_damage_to:hover{
+  transform: scale(1.2);
   transition:0.3s;
-  background: var(--cor-de-fundo);
+  background: rgb(29, 27, 27);
   border-radius: 10px;
-
 }
   
   .SuperEfetivo img, .NaoEfetivo img,.defInfo img, .ataqInfo img {

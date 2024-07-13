@@ -56,50 +56,61 @@ function TypeInfo() {
           </div>
 
           <div className="defInfo">
-            <div className="Fraquesas">
-              <h3>Fraco contra:</h3>
-              {types.damage_relations.double_damage_from.map((damageType) => (
-                <Tooltip title={`Tipo: ${damageType.name}`}>
-                  <img className="double_damage_from" src={`https://raw.githubusercontent.com/partywhale/pokemon-type-icons/fcbe6978c61c359680bc07636c3f9bdc0f346b43/icons/${damageType.name}.svg`} />
-                </Tooltip>
+            <div className="Fraquesas" >
+              <div className="FraquesasDentro">
+                <h3>Fraco contra:</h3>
+                {types.damage_relations.double_damage_from.map((damageType) => (
+                  <Tooltip title={`Tipo: ${damageType.name}`} >
+                    <img className="double_damage_from" src={`https://raw.githubusercontent.com/partywhale/pokemon-type-icons/fcbe6978c61c359680bc07636c3f9bdc0f346b43/icons/${damageType.name}.svg`} />
+                  </Tooltip>
 
-              ))}
+                ))}
+              </div>
+
             </div>
-
 
             <div className="Resistencias">
+              <div className="ResistenciasDentro">
+                <h3>Resistente contra:</h3>
+                {types.damage_relations.half_damage_from.map((damageType) => (
+                  <Tooltip title={`Tipo: ${damageType.name}`}>
+                    <img className="half_damage_from" src={`https://raw.githubusercontent.com/partywhale/pokemon-type-icons/fcbe6978c61c359680bc07636c3f9bdc0f346b43/icons/${damageType.name}.svg`} />
+                  </Tooltip>
+                ))}
+              </div>
 
-              <h3>Resistente contra:</h3>
-              {types.damage_relations.half_damage_from.map((damageType) => (
-                <Tooltip title={`Tipo: ${damageType.name}`}>
-                  <img className="half_damage_from" src={`https://raw.githubusercontent.com/partywhale/pokemon-type-icons/fcbe6978c61c359680bc07636c3f9bdc0f346b43/icons/${damageType.name}.svg`} />
-                </Tooltip>
-              ))}
             </div>
-
 
           </div>
 
-          <h2>Ataque</h2>
+          <div className="defenseHeader">
+           <h2>Ataque</h2>
+          </div>
+
           <div className="ataqInfo">
             <div className="Efetivo">
-              <h3>Moves do tipo {params.type} são super-efetivos contra:</h3>
+              <div className="EfetivoDentro">
+                <h3> Super-efetivos contra:</h3>
 
-              {types.damage_relations.double_damage_to.map((damageType) => (
-                <Tooltip title={`Tipo: ${damageType.name}`}>
-                  <img className="double_damage_to" src={`https://raw.githubusercontent.com/partywhale/pokemon-type-icons/fcbe6978c61c359680bc07636c3f9bdc0f346b43/icons/${damageType.name}.svg`} />
-                </Tooltip>
-              ))}
+                {types.damage_relations.double_damage_to.map((damageType) => (
+                  <Tooltip title={`Tipo: ${damageType.name}`}>
+                    <img className="double_damage_to" src={`https://raw.githubusercontent.com/partywhale/pokemon-type-icons/fcbe6978c61c359680bc07636c3f9bdc0f346b43/icons/${damageType.name}.svg`} />
+                  </Tooltip>
+                ))}
+              </div>
+
 
             </div>
             <div className="NaoEfetivo">
-
-              <h3>Moves do tipo {params.type} não é efetivo contra:</h3>
+              <div className="NaoEfetivoDentro">
+              <h3>Não é efetivo contra:</h3>
               {types.damage_relations.half_damage_to.map((damageType) => (
                 <Tooltip title={`Tipo: ${damageType.name} `}>
                   <img className="half_damage_to" src={`https://raw.githubusercontent.com/partywhale/pokemon-type-icons/fcbe6978c61c359680bc07636c3f9bdc0f346b43/icons/${damageType.name}.svg`} />
                 </Tooltip>
               ))}
+              </div>
+              
             </div>
 
           </div>
