@@ -1,0 +1,11 @@
+
+.Register{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.Char{
+    width: 300px;
+ 
+}
