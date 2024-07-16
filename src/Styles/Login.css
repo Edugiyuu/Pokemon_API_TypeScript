@@ -1,8 +1,4 @@
-.Menu{
-    margin-top: 10px;
-}
-
-.Register {
+.Login {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -11,10 +7,18 @@
 
 .Char {
     width: 300px;
+    margin-top: 100px;
 }
-
 .Char2 {
     display: none;
+}
+.input.Mui-focused{
+    border: 4px sloid red;
+    border-color: red;  /* Muda a cor da borda quando o elemento está em foco */
+    outline: none;      /* Remove o contorno padrão do navegador */
+    background-color: yellow;  /* Muda a cor de fundo quando o elemento está em foco */
+    color: blue;        /* Muda a cor do texto quando o elemento está em foco */
+    box-shadow: 0 0 5px red;   /* Adiciona uma sombra ao redor do elemento em foco */
 }
 
 @media only screen and (max-width: 950px) {
@@ -33,7 +37,7 @@
         width: 250px;
         margin-top: 50px;
     }
-    .Register {
+    .Login {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,8 +46,5 @@
 }
 #AvatarIcon{
     display: none;
-}
-.Menu{
-    margin-top: 0px;
 }
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { TypeAnimation } from 'react-type-animation';
-import useOpenClose from '../Hooks/useOpenClose'; // Importe o custom hook
+import useOpenClose from '../Hooks/useOpenClose';
 
 // video: https://www.youtube.com/watch?v=0ZJgIjIuY7U&ab_channel=WebDevSimplified
 interface PokemonResult {

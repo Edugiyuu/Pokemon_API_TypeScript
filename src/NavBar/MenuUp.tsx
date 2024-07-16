@@ -2,13 +2,14 @@ import { memo } from "react";
 import { NavLink } from "react-router-dom";
 import TemporaryDrawer from './SideBar'
 
+
 function MenuUp() {
 
   return (
     <div className="Menu">
       <img
-        src="https://cdn-icons-png.flaticon.com/512/287/287221.png"
-        style={{ width: "80px" }}
+        src={"https://cdn-icons-png.flaticon.com/512/287/287221.png"}
+        style={{ width: "70px" }}
       />
 
       <NavLink className={"NavLink"} to={`/`}>
