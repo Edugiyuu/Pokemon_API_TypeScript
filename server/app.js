@@ -17,21 +17,14 @@ let Dados = {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Rota para receber dados enviados por POST
 app.post("/register", (req, res) => {
   const { name, email, password } = req.body;
   TodosOsUsuarios.push({ name, email, password });
-/*   Dados = {
-    name: name,
-    email: email,
-    password: password
-  }; */
 
   console.log("Dados recebidos:", TodosOsUsuarios);
   res.status(200).send(Dados);
 });
 
-// Rota para retornar os dados registrados
 app.get("/register", (req, res) => {
   res.json(TodosOsUsuarios);
 });

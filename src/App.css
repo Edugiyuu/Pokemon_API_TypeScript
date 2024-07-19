@@ -124,9 +124,6 @@ hr {
     margin: 0.5rem;
     width: 35%; 
 }
-.Pokemon-buttons button:hover {
-  width: 40%;                                                                         
-}
 
 .Titulo{
   display: flex;

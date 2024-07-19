@@ -21,6 +21,15 @@ interface Sprites {
     other: OtherSprites | null;
 }
 
+interface PokemonType {
+  slot: number;
+  type: PokemonResult;
+}
+
+interface PokemonDetails {
+  sprites: Sprites;
+  types: PokemonType[];
+}
 
 interface OtherSprites{
     "official-artwork": OfficialArtworkSprites ;
@@ -32,18 +41,20 @@ interface OfficialArtworkSprites {
   }
 
 const Pokemons = () => {
-  const [pokemonInfo, setPokemonInfo] = useState<PokemonPages>();
+  const [pokemonName, setPokemonName] = useState<PokemonPages>();
   const [pokemonImg, setPokemonImg] = useState<Sprites>();
+  const [pokemonType, setPokemonType] = useState<PokemonDetails>();
   const [pokemonNome, setPokemonNome] = useState("");
   const [pokemonTotal, setPokemonTotal] = useState(20);
   const [confirmPokemon, changeBoolean] = useOpenClose(false);
+  
 
   useEffect(() => {
     fetch(`https://pokeapi.co/api/v2/pokemon?limit=${pokemonTotal}&offset=0.`)
       .then((response) => response.json())
       .then((parsedResponse) => {
         console.log(parsedResponse);
-        setPokemonInfo(parsedResponse);
+        setPokemonName(parsedResponse);
       })
   }, [pokemonTotal]);
   
@@ -53,6 +64,7 @@ const Pokemons = () => {
       .then((parsedResponse) => {
         console.log(parsedResponse);
         setPokemonImg(parsedResponse.sprites);
+        setPokemonType(parsedResponse.types)
       })
       .catch((error) => console.error("Error", error));
   }, [pokemonNome]);
@@ -102,14 +114,18 @@ const Pokemons = () => {
         
       </header>
       <div >
-      {pokemonInfo && (
+      {pokemonName && (
             <div className="Pokemon-buttons">
               
-              {pokemonInfo.results.map((pokemon) => (
+              {pokemonName.results.map((pokemon) => (
                 <button key={pokemon.name} onClick={() => handleClick(pokemon.name)}>{pokemon.name}</button>
               ))}
+{/*               {pokemonType?.types.map((pokemon) => (
+              <p>{pokemon.type.name}</p>
+            ))} */}
             </div>
           )}
+          
           
       <br></br>
       <button onClick={verMais}>Ver mais</button>
