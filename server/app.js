@@ -7,7 +7,6 @@ import jwt from "jsonwebtoken";
 // Carrega as variáveis de ambiente
 dotenv.config();
 
-// Verifique se as variáveis de ambiente estão sendo lidas corretamente
 console.log('DB_USER:', process.env.DB_USER);
 console.log('DB_PASS:', process.env.DB_PASS);
 
@@ -26,7 +25,7 @@ app.post('/auth/register', async (req, res) => {
   if (!name) {
     return res.status(422).json({ msg: 'O nome é obrigatorio' });
   }
-  // Adicione aqui a lógica de registro do usuário
+
 });
 
 const dbUser = process.env.DB_USER;
