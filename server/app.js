@@ -1,34 +1,44 @@
+import dotenv from 'dotenv';
 import express from "express";
-import bodyParser from "body-parser";
-import cors from 'cors'
+import mongoose from "mongoose";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
-const PORT = process.env.PORT || 3001;
+// Carrega as variáveis de ambiente
+dotenv.config();
+
+// Verifique se as variáveis de ambiente estão sendo lidas corretamente
+console.log('DB_USER:', process.env.DB_USER);
+console.log('DB_PASS:', process.env.DB_PASS);
+
 const app = express();
-app.use(cors());
 
+//só por vias das duvidas..
+app.use(express.json());
+//-----------------
 
-let TodosOsUsuarios = []
-let Dados = {
-  name: '',
-  email: '',
-  password: ''
-};
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.post("/register", (req, res) => {
-  const { name, email, password } = req.body;
-  TodosOsUsuarios.push({ name, email, password });
-
-  console.log("Dados recebidos:", TodosOsUsuarios);
-  res.status(200).send(Dados);
+app.get("/", (req, res) => {
+  res.status(200).json({ msg: "Bem vindo a API!" });
 });
 
-app.get("/register", (req, res) => {
-  res.json(TodosOsUsuarios);
+app.post('/auth/register', async (req, res) => {
+  const { name, email, password, confirmpassword } = req.body;
+  if (!name) {
+    return res.status(422).json({ msg: 'O nome é obrigatorio' });
+  }
+  // Adicione aqui a lógica de registro do usuário
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
-});
+const dbUser = process.env.DB_USER;
+const dbPassword = process.env.DB_PASS;
+
+mongoose.connect(`mongodb+srv://${dbUser}:${dbPassword}@cluster0.becmbol.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`)
+  .then(() => {
+    console.log('Conectou ao banco!');
+    app.listen(3000, () => {
+      console.log('Servidor está rodando na porta 3000!');
+    });
+  })
+  .catch((err) => {
+    console.error('Erro ao conectar ao banco:', err);
+  });
