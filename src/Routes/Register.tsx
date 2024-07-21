@@ -17,7 +17,6 @@ import axios from 'axios';
 import Snackbar from '@mui/material/Snackbar';
 import useOpenClose from '../Hooks/useOpenClose';
 
-
 import '../Styles/Register.css'
 
 const Register = () => {
@@ -26,24 +25,21 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmRegister, changeBoolean] = useOpenClose(false);
 
- const handleRegister = async () => {
+  const handleRegister = async () => {
     try {
-      axios.get('http://localhost:3001/register').then(response => {
-        console.log(response.data);
-      });
-      
       if (name === '' || email === '' || password === '') {
-        
-        
-      }else{
         changeBoolean();
-        axios.post('http://localhost:3001/register', {
-          name: name,
-          email: email,
-          password: password  
-        });
+        return;
       }
-      
+
+      const response = await axios.post('http://localhost:3000/auth/register', {
+        name,
+        email,
+        password,
+      });
+
+      console.log(response.data);
+      changeBoolean();
     } catch (error) {
       console.error(error);
     }
@@ -51,24 +47,14 @@ const Register = () => {
 
   return (
     <div className="Register">
-      {confirmRegister === true ? (
-        <Snackbar
-          open={confirmRegister}
-          autoHideDuration={5000}
-          onClose={changeBoolean}
-          message="Cadastrado!"
-        />
-      ) : (
-        <Snackbar
-          open={confirmRegister}
-          autoHideDuration={5000}
-          onClose={changeBoolean}
-          message="False"
-        />
-      )
-      }
+      <Snackbar
+        open={confirmRegister}
+        autoHideDuration={5000}
+        onClose={changeBoolean}
+        message="Cadastrado!"
+      />
       <img className="Char" src={Prof} alt="" />
-      <img className="Char2"src={ProfAndChild} alt=""/>
+      <img className="Char2" src={ProfAndChild} alt="" />
       <Container maxWidth="xs">
         <CssBaseline />
         <Box
@@ -93,13 +79,11 @@ const Register = () => {
                   fullWidth
                   id="name"
                   label="Nome"
-                  
                   autoFocus
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
               </Grid>
-
               <Grid item xs={12}>
                 <TextField
                   required
