@@ -74,8 +74,8 @@ const NaturePage = () => {
       {pokemonNatures && (
             <div className="Pokemon-buttons">
               
-              {pokemonNatures.results.map((pokemon) => (
-                <button onClick={() => handleClick(pokemon.name)}>{pokemon.name}</button>
+              {pokemonNatures.results.map((pokemon,index) => (
+                <button key={index} onClick={() => handleClick(pokemon.name)}>{pokemon.name}</button>
               ))} 
             </div>
           )}

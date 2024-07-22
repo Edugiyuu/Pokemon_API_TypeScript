@@ -8,7 +8,7 @@ import {
   Button,
   Grid,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Hilda from '../Imgs/Caracters/Hilda.png'
 import CoolGuy from '../Imgs/Caracters/CoolGuy.png'
@@ -20,31 +20,30 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [approved, setApproved] = useState(false);
-  const [Login, setLogin] = useState(false);
+
 
   const handleLogin = async () => {
-
-    
-    const check = await axios.get('http://localhost:3001/register')
-
-    for (let i = 0; i < check.data.length; i++) {
-      console.log(check.data[i].email);
-      if (email !== check.data[i].email || password !== check.data[i].password) {
-        setApproved(false)
-      }else{
-        setApproved(true)
-        setLogin(true)
+    try {
+      const response = await axios.post('http://localhost:3000/auth/login', {
+        email: email,
+        password: password
+      });
+  
+      if (response.status === 200) {
+        setApproved(true);
+        console.log('Login aprovado:', response.data);
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('userId', response.data.id); 
+      } else {
+        setApproved(false);
+        console.log('Login recusado');
       }
+    } catch (error) {
+      setApproved(false);
+      console.error('Erro ao fazer login:', error);
     }
-    if (approved === true) {
-      console.log('aprovado o login');
-       
-    }else{
-      console.log('login recusado');
-      
-    }
-    
   };
+  
 
   return (
     <div className="Login">
@@ -60,20 +59,19 @@ const Login = () => {
             alignItems: "center",
           }}
         >
-            <Avatar id='AvatarIcon' sx={{ m: 1, bgcolor: "primary.light" }}>
-              <h2>L</h2>
-            </Avatar>
+          <Avatar id='AvatarIcon' sx={{ m: 1, bgcolor: "primary.light" }}>
+            <h2>L</h2>
+          </Avatar>
           <Typography variant="h5">Login</Typography>
           <Box sx={{ mt: 1 }}>
             <TextField
               margin="normal"
-              required={true}
+              required
               fullWidth
               id="email"
               label="Email"
               name="email"
               autoFocus
-             
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />

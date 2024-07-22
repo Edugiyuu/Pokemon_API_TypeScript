@@ -10,6 +10,7 @@ import NatureInfo from './Routes/NatureInfo';
 import Stats from './Home/Stats';
 import Register from './Routes/Register'
 import Login from './Routes/Login'
+import UserProfile from './Routes/UserProfile';
 
 const App = () => {
   
@@ -25,11 +26,14 @@ const App = () => {
       <Route path="pokemon/types/" element={<Types/>}/>
        <Route path="pokemon/nature/" element={<Natures/>}/>
        <Route path="pokemon/stats/" element={<Stats/>}/>
+
        <Route path="pokemon/:name" element={<PokemonInfo />} />
        <Route path="pokemon/type/:type" element={<TypeInfo/>}/>
        <Route path="pokemon/nature/:nature" element={<NatureInfo/>}/>
+
        <Route path="register" element={<Register/>}/>
        <Route path="login" element={<Login/>}/>
+       <Route path="profile" element={<UserProfile/>}/>
 
       {/*  <Route path="pokemon/ability/:ability" element={<Abilities />}/>
       

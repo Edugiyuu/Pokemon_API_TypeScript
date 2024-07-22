@@ -35,6 +35,10 @@ export default function AnchorTemporaryDrawer() {
 
       setState({ ...state, [anchor]: open });
     };
+    function handleLogin() {
+      localStorage.removeItem("token")
+      localStorage.removeItem("userId")
+    }
 
   const list = (anchor: Anchor) => (
     <Box
@@ -68,8 +72,21 @@ export default function AnchorTemporaryDrawer() {
             </Link>
             
           </ListItem>
+
+          <ListItem>
+          
+            <Link to={`/profile`}>
+              <ListItemText id='SideBar' primary={"User Profile"} />
+            </Link>
+            
+          </ListItem>
       </List>
       <Divider />
+      <Link to={`/login`} onClick={handleLogin}>
+        <ListItemText  id='SideBar' primary={"Log out"} />
+      </Link>
+       
+        
    
     </Box>
   );
