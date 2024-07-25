@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import User from './models/User.js';
 import jwt from "jsonwebtoken";
-
+import nodemailer from 'nodemailer'
 // Carrega as variáveis de ambiente
 import cors from 'cors';
 
@@ -22,6 +22,36 @@ app.use(express.json());
 //-----------------
 //Rota publica
 app.use(cors());
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASS,
+  },
+  tls: {
+    rejectUnauthorized: false,
+  },
+});
+
+
+app.post('/send-email', (req, res) => {
+  const { to, subject, text } = req.body;
+
+  const mailOptions = {
+    from: process.env.GMAIL_USER,
+    to: to,
+    subject: subject,
+    text: text,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error('Erro ao enviar e-mail:', error);
+      return res.status(500).json({ error: error.toString() });
+    }
+    res.status(200).json({ message: 'E-mail enviado!', info });
+  });
+});
 app.get("/", (req, res) => {
   res.status(200).json({ msg: "Bem vindo a API!" });
 });
@@ -49,7 +79,7 @@ function checkToken(req, res, next) {
   try {
     const secret = process.env.SECRET;
     const decoded = jwt.verify(token, secret);
-    req.token = decoded; // Adiciona o ID do usuário ao objeto req
+    req.token = decoded;
     next();
   } catch (error) {
     res.status(400).json({ msg: 'Token inválido' });
@@ -116,7 +146,7 @@ app.post('/auth/login', async (req, res) => {
   }
   
   // Checar se a senha é igual
-  const checkPassword = await bcrypt.compare(password, user.password);
+  const checkPassword = bcrypt.compare(password, user.password);
   
   if (!checkPassword) {
     return res.status(422).json({ msg: 'Senha inválida' });
@@ -129,11 +159,11 @@ app.post('/auth/login', async (req, res) => {
       secret
     );
     
-    // Incluindo o ID do usuário na resposta
+    
     res.status(200).json({
       msg: 'Autenticação feita com sucesso',
       token,
-      id: user._id // Adicione o ID do usuário aqui
+
     });
   } catch (err) {
     console.log(err);

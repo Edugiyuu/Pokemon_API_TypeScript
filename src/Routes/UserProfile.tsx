@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-// Defina a interface para o usuário
+
 interface User {
   name: string;
   email: string;
-  // Adicione outros campos conforme necessário
+  
 }
 
 const UserProfile = () => {
@@ -17,13 +17,13 @@ const UserProfile = () => {
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const userId = localStorage.getItem('userId'); // Obtém o ID do usuário
+        const userId = localStorage.getItem('userId'); 
 
         if (!token || !userId) {
           throw new Error('Token ou ID do usuário não encontrado');
         }
         
-        const response = await axios.get<{ user: User }>(`http://localhost:3000/user/${userId}`, {
+        const response = await axios.get(`http://localhost:3000/user/${userId}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

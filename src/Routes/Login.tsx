@@ -7,8 +7,9 @@ import {
   TextField,
   Button,
   Grid,
+  Snackbar,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Hilda from '../Imgs/Caracters/Hilda.png'
 import CoolGuy from '../Imgs/Caracters/CoolGuy.png'
@@ -33,7 +34,15 @@ const Login = () => {
         setApproved(true);
         console.log('Login aprovado:', response.data);
         localStorage.setItem('token', response.data.token);
-        localStorage.setItem('userId', response.data.id); 
+        localStorage.setItem('userId', response.data.id);
+
+        await axios.post('http://localhost:3000/send-email', {
+          to: "edupaz077@gmail.com",
+          subject: "Login",
+          text: "Login feito",
+          html: "<strong>Hello world?</strong>",
+        });
+        console.log('email enviado');
       } else {
         setApproved(false);
         console.log('Login recusado');
@@ -46,7 +55,7 @@ const Login = () => {
   
 
   return (
-    <div className="Login">
+    <div className="Login">   
       <img className="Char" src={Hilda} alt="" />
       <img className="Char2" src={GreenAndCynthia} alt="" />
       <Container maxWidth="xs">

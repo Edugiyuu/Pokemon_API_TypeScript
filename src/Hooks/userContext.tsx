@@ -18,20 +18,7 @@ export const UseStorage = ({ children }: UseStorageProps) => {
 
   useEffect(() => {
     const fetchUseData = async () => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        try {
-          const response = await axios.get('http://localhost:3000/user', {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          });
-          setName(response.data.name);
-          setEmail(response.data.email);
-        } catch (error) {
-          console.error('Erro ao buscar dados do usuário:', error);
-        }
-      }
+      
     };
 
     fetchUseData();
