@@ -5,9 +5,8 @@ import bcrypt from "bcrypt";
 import User from './models/User.js';
 import jwt from "jsonwebtoken";
 import nodemailer from 'nodemailer'
-// Carrega as variáveis de ambiente
+import favorites from './routes/favorites.js'
 import cors from 'cors';
-
 
 dotenv.config();
 
@@ -16,6 +15,7 @@ console.log('DB_PASS:', process.env.DB_PASS);
 console.log('SECRET', process.env.SECRET);
 
 const app = express();
+app.use(favorites);
 
 //só por vias das duvidas..
 app.use(express.json());
@@ -68,7 +68,7 @@ app.get("/user/:id",checkToken,async(req,res)=>{
   res.status(200).json({user})
 })
 
-function checkToken(req, res, next) {
+export function checkToken(req, res, next) {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(" ")[1];
 
@@ -90,14 +90,17 @@ function checkToken(req, res, next) {
 app.post('/auth/register', async (req, res) => {
   const { name, email, password } = req.body;
   //validação
+  //se não ter nome..
   if (!name) {
     return res.status(422).json({ msg: 'O nome é obrigatorio' });
   }
+  //se não ter email..
   if (!email) {
     return res.status(422).json({ msg: 'O email é obrigatorio' });
   }
+  //se não ter senha..
   if (!password) {
-    return res.status(422).json({ msg: 'A password é obrigatorio' });
+    return res.status(422).json({ msg: 'A senha é obrigatorio' });
   }
   
   const userExists = await User.findOne({email:email})
@@ -113,6 +116,7 @@ app.post('/auth/register', async (req, res) => {
     name,
     email,
     password:passwordHash,
+    
     /* se eu usar só password ele n fica com as letrinhas etc.. */
    /*  password */
   })
@@ -159,18 +163,16 @@ app.post('/auth/login', async (req, res) => {
       secret
     );
     
-    
     res.status(200).json({
       msg: 'Autenticação feita com sucesso',
       token,
-
+      id: user._id
     });
   } catch (err) {
     console.log(err);
     res.status(500).json({ msg: 'Algum erro ocorreu' });
   }
 });
-
 
 const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASS;

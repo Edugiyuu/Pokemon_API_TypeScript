@@ -3,6 +3,7 @@ import { Link, NavLink, useParams } from 'react-router-dom';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Tooltip } from 'recharts'; 'recharts';
 import image from '../Imgs/CardFrames/image.png'
 import '../Styles/PokemonInfo.css';
+import axios from "axios";
 
 interface Stats {
   base_stat: number;
@@ -77,14 +78,12 @@ interface PokemonSpecies {
   }
 }
 
-
-
 function PokemonInfo() {
 
   const [pokemonInfo, setPokemonInfo] = useState<Stats[] & OtherThings & Sprites>();
   const [pokemonSpecies, setPokemonSpecies] = useState<PokemonSpecies>();
   
-  const [sprite, setSprite] = useState('front_default');
+/*   const [sprite, setSprite] = useState('front_default'); */
   const params = useParams();
 
   useEffect(() => {
@@ -106,25 +105,55 @@ function PokemonInfo() {
       })
       .catch((error) => console.error("Error", error));
   }, []);
-  function mudarSpriteNormal() {
-    if (sprite === 'front_default') {
-      setSprite('back_default');
-    } else {
-      setSprite('front_default');
+  
+/*   const handleFavorites = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const userId = localStorage.getItem('userId');
+      const favoritePokemon = params.name;
+  
+      if (!token || !userId || !favoritePokemon) {
+        throw new Error('Token, ID do usuário ou nome do Pokémon não encontrado');
+      }
+  
+      const response = await axios.patch(
+        `http://localhost:3000/user/${userId}/favorites`,
+        { favorite: favoritePokemon },
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          }
+        }
+      );
+  
+      console.log(response.data);
+    } catch (error) {
+      console.error('Erro ao atualizar favoritos:', error);
     }
-    if (sprite === 'back_shiny') {
-      setSprite('back_default')
+  };
+  
+ const removeFavorites = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const userId = localStorage.getItem('userId');
+        
+      const response = await axios.delete(
+        `http://localhost:3000/user/${userId}/favorites`, 
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+          data: { favorite: params.name }
+        }
+      );
+  
+      console.log(response.data);  
+    } catch (error) {
+      console.error('Erro ao remover', error);
     }
-  }
-  function mudarSpriteShiny() {
-    if (sprite === 'front_default') {
-      setSprite('back_shiny');
-    } else if (sprite === 'back_shiny') {
-      setSprite('front_shiny');
-    } else if (sprite === 'front_shiny') {
-      setSprite('back_shiny');
-    }
-  }
+  };
+ */
   console.log(pokemonInfo?.stats);
   const data2 = pokemonInfo?.stats.map((stat) => ({
     name: stat.stat.name,
@@ -168,8 +197,8 @@ function PokemonInfo() {
               <div className="img">
                 <img className='pokemon-img'src={pokemonInfo.sprites.other.home.front_default} alt="" />
 
-                <button onClick={mudarSpriteNormal}>Mudar Sprite</button>
-                <button onClick={mudarSpriteShiny}>Versão Shiny</button>
+ {/*                <button onClick={handleFavorites}>Favorito</button>
+                <button onClick={removeFavorites}>Tirar dos favoritos</button> */}
               </div>
             )}
             {pokemonInfo.abilities && (
