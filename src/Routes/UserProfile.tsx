@@ -10,8 +10,6 @@ interface User {
 
 const UserProfile = () => {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -30,22 +28,14 @@ const UserProfile = () => {
         });
 
         setUser(response.data.user);
-        setLoading(false);
       } catch (error) {
-        if (error instanceof Error) {
-          setError(error.message);
-        } else {
-          setError('Erro desconhecido');
-        }
-        setLoading(false);
+        console.log(error);
+        
       }
     };
 
     fetchUserData();
   }, []);
-
-
-  if (error) return <p>Erro: {error}</p>;
 
   return (
     <div className="user-profile-container">
