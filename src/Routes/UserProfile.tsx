@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../Styles/UserProfile.css';
 import Img from '../Imgs/fire.png';
@@ -7,9 +7,14 @@ interface User {
   name: string;
   email: string;
 }
+interface Favorites{
+  name:string,
+  img:string
+}
 
 const UserProfile = () => {
   const [user, setUser] = useState<User | null>(null);
+  const [userFavorites, setUserFavorites] = useState<Favorites[]>([]);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -26,6 +31,12 @@ const UserProfile = () => {
             'Authorization': `Bearer ${token}`
           }
         });
+        var favorites = await axios.get(`http://localhost:3000/user/${userId}/favorites`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        setUserFavorites(favorites.data.favorites)
 
         setUser(response.data.user);
       } catch (error) {
@@ -48,8 +59,8 @@ const UserProfile = () => {
             <p>{user.email}</p>
             <div className="stats">
               <div className="stat">
-                <p>21</p>
-                <p>Posts</p>
+
+                <p>Algo</p>
               </div>
              
             </div>
@@ -62,7 +73,13 @@ const UserProfile = () => {
       </div>
       <div className="edit-profile">
         <h2>Basic Info</h2>
-       
+        {userFavorites.map((pokemon, index) => (
+          <div>
+            <h3 key={index}>{pokemon.name}</h3>
+            <img className='favPokemons' style={{width:"100px"}} src={pokemon.img} alt="" />
+          </div>
+
+            ))}
       </div>
     </div>
   );

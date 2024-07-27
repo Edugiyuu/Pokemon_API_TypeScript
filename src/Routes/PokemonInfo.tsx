@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useParams } from 'react-router-dom';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Tooltip } from 'recharts'; 'recharts';
-import image from '../Imgs/CardFrames/image.png'
+import favoriteCard from '../Imgs/CardFrames/favorited.png'
 import '../Styles/PokemonInfo.css';
 import axios from "axios";
 
@@ -106,7 +106,7 @@ function PokemonInfo() {
       .catch((error) => console.error("Error", error));
   }, []);
   
-/*   const handleFavorites = async () => {
+  const handleFavorites = async () => {
     try {
       const token = localStorage.getItem('token');
       const userId = localStorage.getItem('userId');
@@ -116,9 +116,9 @@ function PokemonInfo() {
         throw new Error('Token, ID do usuário ou nome do Pokémon não encontrado');
       }
   
-      const response = await axios.patch(
+      const response = await axios.post(
         `http://localhost:3000/user/${userId}/favorites`,
-        { favorite: favoritePokemon },
+        { favorite: { name: favoritePokemon} },
         {
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -153,7 +153,7 @@ function PokemonInfo() {
       console.error('Erro ao remover', error);
     }
   };
- */
+
   console.log(pokemonInfo?.stats);
   const data2 = pokemonInfo?.stats.map((stat) => ({
     name: stat.stat.name,
@@ -196,9 +196,9 @@ function PokemonInfo() {
             {pokemonInfo.sprites && pokemonSpecies?.color && (
               <div className="img">
                 <img className='pokemon-img'src={pokemonInfo.sprites.other.home.front_default} alt="" />
-
- {/*                <button onClick={handleFavorites}>Favorito</button>
-                <button onClick={removeFavorites}>Tirar dos favoritos</button> */}
+                
+                <button onClick={handleFavorites}>Favorito</button>
+                <button onClick={removeFavorites}>Tirar dos favoritos</button>
               </div>
             )}
             {pokemonInfo.abilities && (

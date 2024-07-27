@@ -1,11 +1,15 @@
 import mongoose from "mongoose";
+const favorite = new mongoose.Schema({
+    name: String,
+    img: String,
 
+  });
 const User = mongoose.model('User',{
     name: String,
     email:String,
     password:String,
     avatar:String,
-    favorites: [String]
+    favorites: [favorite],
 })
 
 export default User;

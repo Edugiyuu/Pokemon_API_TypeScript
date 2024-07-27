@@ -35,7 +35,7 @@
   align-items: center;
   animation-name: example;
   animation-duration: 1s;
-  background: url('../Imgs/CardFrames/image.png') no-repeat center center;
+  background: url('../Imgs/CardFrames/pokeball.png') no-repeat center center;
   background-color: transparent;
   background-size:contain;
   width: 358px;
@@ -175,7 +175,7 @@
   align-items: center;
   animation-name: example;
   animation-duration: 1s;
-   background: url('../Imgs/CardFrames/image.png') no-repeat center center;
+   background: url('../Imgs/CardFrames/pokeball.png') no-repeat center center;
   background-color: transparent;
   background-size:contain;
 }
