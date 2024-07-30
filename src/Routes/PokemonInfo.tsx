@@ -121,6 +121,7 @@ function PokemonInfo() {
         { favorite: { name: favoritePokemon} },
         {
           headers: {
+            //Bearer é o tipo de token de autenticação 
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
           }

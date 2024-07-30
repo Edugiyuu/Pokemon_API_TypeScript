@@ -66,7 +66,7 @@ router.post("/user/:id/favorites", checkToken, async (req, res) => {
       arr.splice(0, 1);
       console.log(arr); */
 
-      // Percorre a lista de favoritos e remove o Pokémon se encontrar
+      // percorre a lista de favoritos e remove o Pokémon se encontrar
       for (let i = 0; i < user.favorites.length; i++) {
         //se achar o mesmo nome..
         if (user.favorites[i].name === favorite.name) {

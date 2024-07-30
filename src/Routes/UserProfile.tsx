@@ -72,7 +72,7 @@ const UserProfile = () => {
         )}
       </div>
       <div className="edit-profile">
-        <h2>Basic Info</h2>
+        <h2>Favorites</h2>
         {userFavorites.map((pokemon, index) => (
           <div>
             <h3 key={index}>{pokemon.name}</h3>
