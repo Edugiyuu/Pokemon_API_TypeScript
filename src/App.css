@@ -124,6 +124,21 @@ hr {
     margin: 0.5rem;
     width: 35%; 
 }
+.Pokemon-Link {
+  box-shadow: 5px 5px lightblue;
+  margin: 0.5rem;
+  width: 35%;
+  background-color: var(--cor-de-fundo);
+  color: rgb(0, 0, 0);
+  padding-left:28px;
+  padding-right:28px;
+  padding-bottom: 13px;
+  padding-top: 13px;
+  border-radius: 3px;
+  text-align: center;
+}
+
+
 
 .Titulo{
   display: flex;
@@ -413,7 +428,7 @@ hr {
       align-items: center;
       margin: 30px;
     }
-    .Pokemon-buttons button{
+    .Pokemon-buttons{
       height: 3.5rem;
       width: 9rem;
   

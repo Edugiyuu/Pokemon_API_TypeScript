@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { TypeAnimation } from 'react-type-animation';
-import useOpenClose from '../Hooks/useOpenClose';
 
 // video: https://www.youtube.com/watch?v=0ZJgIjIuY7U&ab_channel=WebDevSimplified
 interface PokemonResult {
@@ -46,7 +45,7 @@ const Pokemons = () => {
   const [pokemonType, setPokemonType] = useState<PokemonDetails>();
   const [pokemonNome, setPokemonNome] = useState("");
   const [pokemonTotal, setPokemonTotal] = useState(20);
-  const [confirmPokemon, changeBoolean] = useOpenClose(false);
+ 
   
 
   useEffect(() => {
@@ -68,11 +67,6 @@ const Pokemons = () => {
       })
       .catch((error) => console.error("Error", error));
   }, [pokemonNome]);
-
-  function handleClick(pokemonName: string) {
-    setPokemonNome(pokemonName);
-    changeBoolean();
-  }
 
   function verMais() {
     setPokemonTotal(pokemonTotal + 10);
@@ -118,7 +112,7 @@ const Pokemons = () => {
             <div className="Pokemon-buttons">
               
               {pokemonName.results.map((pokemon) => (
-                <button key={pokemon.name} onClick={() => handleClick(pokemon.name)}>{pokemon.name}</button>
+                <NavLink key={pokemon.name} className={"Pokemon-Link"} to={`/pokemon/${pokemon.name}`}>{pokemon.name}</NavLink>
               ))}
 {/*               {pokemonType?.types.map((pokemon) => (
               <p>{pokemon.type.name}</p>
@@ -131,19 +125,6 @@ const Pokemons = () => {
       <button onClick={verMais}>Ver mais</button>
       <NavLink to={`/pokemon/${pokemonNome}`}>{pokemonNome}</NavLink>
     </div>
-    {confirmPokemon && (
-          <div className='container'>
-
-            <div className='confirm-container'>
-             <h2>Quer ver mais sobre {pokemonNome}?</h2>
-             {pokemonImg && (
-              <img src={pokemonImg.other?.["official-artwork"].front_default} alt="" />
-             )}
-              <NavLink className={"NavLink"} to={`/pokemon/${pokemonNome}`}>Sim</NavLink>
-              <button className="DeclineButton" onClick={changeBoolean}>Não</button>
-            </div>
-          </div>
-        )}
     </div>
   );
 };
