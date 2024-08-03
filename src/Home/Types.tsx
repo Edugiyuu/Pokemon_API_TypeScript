@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { TypeAnimation } from 'react-type-animation';
-import useOpenClose from "../Hooks/useOpenClose";
 
 
 // video: https://www.youtube.com/watch?v=0ZJgIjIuY7U&ab_channel=WebDevSimplified
@@ -15,8 +14,7 @@ interface AllTypes {
 }
 const TypePage = () => {
     const [typeInfo, setTypeInfo] = useState<AllTypes>();
-    const [type, setType] = useState("");
-    const [confirmType, changeBoolean] = useOpenClose(false);
+    
 
     useEffect(() => {
         fetch(`https://pokeapi.co/api/v2/type/?limit=18`)
@@ -27,10 +25,6 @@ const TypePage = () => {
             })
     }, []);
 
-    function handleClick(pokemonName: string) {
-        setType(pokemonName);
-        changeBoolean();
-    }
     const [procurarPokemon, setProcurarPokemon] = useState('');
     const typePesquisado = () => {
         window.location.href = `/pokemon/type/${procurarPokemon.toLowerCase()}`;
@@ -73,23 +67,13 @@ const TypePage = () => {
                     <div className="Pokemon-buttons">
 
                         {typeInfo.results.map((pokemon) => (
-                            <button className={`btn btn-header ${pokemon.name}`} id={pokemon.name} onClick={() => handleClick(pokemon.name)}>{pokemon.name}</button>
+                            <Link to={`/pokemon/type/${pokemon.name}`} id={"Pokemon-Link"} className={`btn btn-header ${pokemon.name}`}>{pokemon.name}</Link>
                         ))}
                     </div>
                 )}
                 <br></br>
 
             </div>
-            {confirmType && (
-                <div className='container'>
-
-                    <div className='confirm-container'>
-                        <h2>Quer ver mais sobre {type}?</h2>
-                        <NavLink className={"NavLink"} to={`/pokemon/type/${type}`}>Sim</NavLink>
-                        <button className="DeclineButton" onClick={changeBoolean} >Não</button>
-                    </div>
-                </div>
-            )}
         </div>
     );
 };

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 import { TypeAnimation } from 'react-type-animation';
 import useOpenClose from "../Hooks/useOpenClose";
 
@@ -12,9 +11,15 @@ interface NatureNameURL {
 interface AllNatures {
     results: NatureNameURL[]
 }
+interface InfoNatures{
+  decreased_stat: NatureNameURL
+  increased_stat: NatureNameURL
+
+}
 const NaturePage = () => {
   const [pokemonNatures, setPokemonNatures] = useState<AllNatures>();
   const [pokemonNature, setPokemonNature] = useState("");
+  const [infoNature, setInfoNature] = useState<InfoNatures>();
   const [confirmNature, changeBoolean] = useOpenClose(false);
 
   useEffect(() => {
@@ -26,14 +31,23 @@ const NaturePage = () => {
         setPokemonNatures(parsedResponse);
       })
   }, []);
+  useEffect(() => {
+    fetch(`https://pokeapi.co/api/v2/nature/${pokemonNature}`)
+      .then((response) => response.json())
+      .then((parsedResponse) => {
+        console.log(parsedResponse);
+        setInfoNature(parsedResponse)
+      });
+  }, [pokemonNature]);
 
   function handleClick(pokemonNature:string) {
+
     setPokemonNature(pokemonNature);
     changeBoolean();
   }
 
   const [procurarPokemon, setProcurarPokemon] = useState('');
-  const pokemonPesquisado= () => {
+  const naturePesquisada= () => {
     window.location.href = `/pokemon/nature/${procurarPokemon.toLowerCase()}`;
   };
   return (
@@ -62,7 +76,7 @@ const NaturePage = () => {
 
             <div className="pesquisar">
               <input placeholder="Escreva a nature em ingles :)" type="text"value={procurarPokemon} onChange={(pokemonProcurado) => setProcurarPokemon(pokemonProcurado.target.value)}/>
-              <button  onClick={pokemonPesquisado}>
+              <button  onClick={naturePesquisada}>
                 Procurar
               </button>
             </div>
@@ -86,9 +100,17 @@ const NaturePage = () => {
           <div className='container'>
             
             <div className='confirm-container'>
-             <h2>Quer ver mais sobre {pokemonNature}?</h2>
-              <NavLink className={'NavLink'} to={`/pokemon/nature/${pokemonNature}`}>Sim</NavLink>
-              <button className="DeclineButton" onClick={changeBoolean} >Não</button>
+             <h2>{pokemonNature.toLocaleUpperCase()}</h2>
+
+             <div className="natures">
+             {infoNature && infoNature.increased_stat && <h2 className="up">Aumenta: {infoNature.increased_stat.name}</h2>}
+             {infoNature && infoNature.decreased_stat && <h2 className="down">Diminui: {infoNature.decreased_stat.name}</h2>}
+
+             {infoNature && !infoNature.increased_stat && <h2>Sem mudançãs de stats</h2>}
+             </div>
+             
+
+              <button className="DeclineButton" onClick={changeBoolean}>Fechar</button>
             </div>
           </div>
         )}
