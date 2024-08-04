@@ -110,14 +110,14 @@
   align-items: left;
 }
 
-/* .favPokemons {
+.favPokemons {
   width: 130px;
   border: 3px rgb(0, 0, 0) solid;
   background-color: #f7f7f7;
   border-radius: 10px;
   margin-right: 40px; 
-} */
-.favPokemons {
+}
+/* .favPokemons {
   width: 130px;
   border: 3px rgb(0, 0, 0) solid;
   background-color: #f7f7f7;
@@ -126,7 +126,7 @@
   background-position: center; 
   border-radius: 10px;
   margin-right: 40px; 
-}
+} */
 
 .fav-types {
   display: flex;
