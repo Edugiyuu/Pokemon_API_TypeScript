@@ -453,14 +453,6 @@ hr {
       align-items: center;
       margin: 30px;
     }
-    .Pokemon-buttons{
-      height: 3.5rem;
-      width: 9rem;
-  
-    }
-    .Pokemon-buttons{
-      margin: 20px;
-    }
   }
 
   @media only screen and (max-width: 750px) {

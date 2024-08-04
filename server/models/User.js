@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const favorite = new mongoose.Schema({
     name: String,
     img: String,
-
+    types:[String]
   });
 const User = mongoose.model('User',{
     name: String,

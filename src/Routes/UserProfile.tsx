@@ -2,14 +2,16 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../Styles/UserProfile.css';
 import Img from '../Imgs/fire.png';
+import { NavLink } from 'react-router-dom';
 
 interface User {
   name: string;
   email: string;
 }
-interface Favorites{
-  name:string,
-  img:string
+interface Favorites {
+  name: string,
+  img: string,
+  types: string[]
 }
 
 const UserProfile = () => {
@@ -36,17 +38,22 @@ const UserProfile = () => {
             'Authorization': `Bearer ${token}`
           }
         });
+
         setUserFavorites(favorites.data.favorites)
+        /*  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${userFavorites}`); */
 
         setUser(response.data.user);
       } catch (error) {
         console.log(error);
-        
+
       }
     };
 
     fetchUserData();
   }, []);
+  const tresPrimeirosPokemons = userFavorites.slice(0, 3);
+  console.log(tresPrimeirosPokemons);
+
 
   return (
     <div className="user-profile-container">
@@ -62,10 +69,10 @@ const UserProfile = () => {
 
                 <p>Algo</p>
               </div>
-             
+
             </div>
             <button>Upload new avatar</button>
-            
+
           </div>
         ) : (
           <p>Usuário não encontrado.</p>
@@ -73,13 +80,25 @@ const UserProfile = () => {
       </div>
       <div className="edit-profile">
         <h2>Favorites</h2>
-        {userFavorites.map((pokemon, index) => (
-          <div>
-            <h3 key={index}>{pokemon.name}</h3>
-            <img className='favPokemons' style={{width:"100px"}} src={pokemon.img} alt="" />
+        {tresPrimeirosPokemons.map((pokemon, index) => (
+          <div className='favorited' key={index}>
+            <h4 className='name'>{pokemon.name}</h4>
+            <div className='fav-content'>
+              <img className='favPokemons' src={pokemon.img} alt={pokemon.name} />
+              <div className='fav-types'>
+                {pokemon.types.map((type, i) => (
+                  <img
+                    key={i}
+                    style={{ width: '80px' }}
+                    src={`https://raw.githubusercontent.com/partywhale/pokemon-type-icons/fcbe6978c61c359680bc07636c3f9bdc0f346b43/icons/${type}.svg`}
+                    alt={type}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
-
-            ))}
+        ))}
+        <NavLink className='NavLink' to='/pokemon/favorites'>Ver Mais</NavLink>
       </div>
     </div>
   );

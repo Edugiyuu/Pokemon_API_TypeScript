@@ -3,6 +3,7 @@ import express from "express";
 import User from '../models/User.js';
 import { checkToken } from "../app.js";
 import cors from 'cors';
+import { types } from "util";
 
 
 const router = express.Router();
@@ -37,6 +38,11 @@ router.post("/user/:id/favorites", checkToken, async (req, res) => {
       const pokemonData = await response.json();
       
       console.log(pokemonData.sprites.other.home.front_default);
+      console.log(pokemonData.types[0].type.name);
+
+      for (let i = 0; i < pokemonData.types.length; i++) {
+        console.log(pokemonData.types[i].type.name);
+      }
       //verifica se o array de objetos do usuario se já tem o pokemon 
       for (let i = 0; i < user.favorites.length; i++) {
         //se já tem o pokemon..
@@ -45,7 +51,7 @@ router.post("/user/:id/favorites", checkToken, async (req, res) => {
         }
 
       }
-       user.favorites.push({ name: favorite.name, img: pokemonData.sprites.other.home.front_default });
+       user.favorites.push({ name: favorite.name, img: pokemonData.sprites.other.home.front_default, types: pokemonData.types.map(typeInfo => typeInfo.type.name)});
   
       await user.save();
       res.status(200).json({ msg: 'Favoritos atualizados com sucesso', user });

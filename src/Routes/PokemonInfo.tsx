@@ -145,7 +145,9 @@ function PokemonInfo() {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
-          data: { favorite: params.name }
+          data: {
+            favorite: { name: params.name }
+          }
         }
       );
   
@@ -155,7 +157,6 @@ function PokemonInfo() {
     }
   };
 
-  console.log(pokemonInfo?.stats);
   const data2 = pokemonInfo?.stats.map((stat) => ({
     name: stat.stat.name,
     base_stat: stat.base_stat,

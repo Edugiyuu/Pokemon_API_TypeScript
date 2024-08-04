@@ -11,8 +11,9 @@
   background-color: #f7f7f7;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 30px;
   width: 45%; 
+  align-items: center;
 }
 
 .user-profile h1, .edit-profile h2 {
@@ -54,6 +55,13 @@
   display: flex;
   flex-direction: column;
 }
+.edit-profile .NavLink{
+
+  display: flex;
+  align-items: center;
+
+  justify-content: center;
+}
 
 .form-group {
   margin-bottom: 15px;
@@ -72,3 +80,56 @@
   border-radius: 5px;
 }
 
+
+.favorited {
+  display: flex;
+  flex-direction: column; /* Alinha o conteúdo em coluna */
+  justify-content: center;
+  align-items: flex-start;
+  max-width: auto;
+  width: auto;
+  border: 3px rgb(0, 0, 0) solid;
+  padding: 20px;
+  margin: 10px auto; 
+  border-radius: 10px;
+  background-color: rgb(29, 27, 27);
+  margin-bottom: 20px; 
+}
+
+.name {
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  margin: 10px; /* Espaçamento abaixo do nome */
+  text-align: center;
+
+}
+
+.fav-content {
+  display: flex;
+  flex-direction: row; /* Alinha imagem e tipos em linha */
+  align-items: left;
+}
+
+/* .favPokemons {
+  width: 130px;
+  border: 3px rgb(0, 0, 0) solid;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  margin-right: 40px; 
+} */
+.favPokemons {
+  width: 130px;
+  border: 3px rgb(0, 0, 0) solid;
+  background-color: #f7f7f7;
+  background: url(../Imgs/Backgrounds/pokeball2.png) no-repeat; 
+  background-size: 170px; 
+  background-position: center; 
+  border-radius: 10px;
+  margin-right: 40px; 
+}
+
+.fav-types {
+  display: flex;
+  flex-direction: row; 
+  gap: 35px;
+}

@@ -53,7 +53,7 @@ export default function AnchorTemporaryDrawer() {
        
           <ListItem  >
           
-            <Link to={`/favorites`}>
+            <Link to={`pokemon/favorites`}>
               <ListItemText id='SideBar' primary={"Favorites"} />
             </Link>
             
