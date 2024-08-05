@@ -1,0 +1,104 @@
+
+:root {
+    --img-grass: url('../Imgs/grass.png');
+    --img-fire: url('../Imgs/fire.png');
+    --img-electric: url('../Imgs/electric.png');
+    --img-dragon: url('../Imgs/dragon.png');
+    --img-water: url('../Imgs/water.png');
+  /* ----------------------------------------- */
+    --img-fighting: url('../Imgs/Backgrounds/fighting.png');
+    --img-electric: url('../Imgs/Backgrounds/electric.png');
+    --img-psychic: url('../Imgs/Backgrounds/psychic.png');
+    --img-dragon: url('../Imgs/Backgrounds/dragon.png');
+    --img-flying: url('../Imgs/Backgrounds/flying.png');
+    --img-ghost: url('../Imgs/Backgrounds/ghost.png');
+    --img-dark: url('../Imgs/Backgrounds/dark.png');
+    --img-poison: url('../Imgs/Backgrounds/poison.png');
+    --img-normal: url('../Imgs/Backgrounds/normal.png');
+    --img-rock: url('../Imgs/Backgrounds/rock.png');
+    --img-fairy: url('../Imgs/Backgrounds/fairy.png');
+    --img-water: url('../Imgs/Backgrounds/water.png');
+    --img-ground: url('../Imgs/Backgrounds/ground.png');
+    --img-steel: url('../Imgs/Backgrounds/steel.png');
+    --img-ice: url('../Imgs/Backgrounds/ice.png');
+    --img-grass: url('../Imgs/Backgrounds/grass.png');
+    --img-bug: url('../Imgs/Backgrounds/bug.png');
+    --img-fire: url('../Imgs/Backgrounds/fire.png');
+    --img-null: url('../Imgs/Backgrounds/null.png');
+    --img-debuff: url('../Imgs/Backgrounds/debuff.png');
+    --img-buff: url('../Imgs/Backgrounds/buff.png');
+  }
+.user-profile, .edit-profile {
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 45%;
+    margin: 10px auto;
+    align-items: center;
+  }
+  
+  /* Layout para dispositivos móveis */
+  .allFavorites {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+      flex-wrap: wrap;
+      
+  }
+  
+  .favorited {
+    width: 90%;
+    max-width: 300px;
+    border: 3px solid rgb(29, 27, 27);
+    padding-bottom: 20px;
+    padding-top: 20px;
+    
+    margin-right: 15px;
+    margin-top: 30px;
+    border-radius: 10px;
+    background-color: rgb(29, 27, 27);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .name {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .fav-content {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+  }
+  
+  .favPokemons {
+    width: 150px;
+    border: 3px solid rgb(29, 27, 27);
+    background-color: #f3f3f3;
+    border-radius: 20px;
+  }
+  
+  .fav-types {
+    display: flex;
+    flex-direction: row;
+    gap: 10px; 
+    margin-top: 10px;
+  }
+  
+  .LinkInfo {
+    background-color: rgb(216, 40, 40);
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    font-family: Rubik;
+  }
+  
+  

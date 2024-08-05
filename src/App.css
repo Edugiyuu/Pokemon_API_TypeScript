@@ -6,7 +6,7 @@
 
 *{
   text-decoration: none;
-  font-family: "Raleway"
+  font-family: "Rubik"
 }
 
 
@@ -36,7 +36,7 @@ button {
 h1,
 h2,
 h3 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Rubik;
 }
 
 h1,
@@ -136,6 +136,7 @@ hr {
   padding-top: 13px;
   border-radius: 3px;
   text-align: center;
+  font-family: Rubik;
 }
 #Pokemon-Link {
   box-shadow: 5px 5px lightblue;
@@ -148,6 +149,7 @@ hr {
   padding-top: 13px;
   border-radius: 3px;
   text-align: center;
+  font-family: Rubik;
 }
 
 
@@ -273,6 +275,7 @@ hr {
     padding-bottom: 13px;
     padding-top: 13px;
     border-radius: 3px;
+    font-family: Rubik;
     
 }
 

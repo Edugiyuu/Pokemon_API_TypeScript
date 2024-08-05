@@ -7,7 +7,7 @@
   font-family: Arial, sans-serif;
 }
 
-.user-profile, .edit-profile {
+.user-profile, .profile-edit-profile {
   background-color: #f7f7f7;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -16,7 +16,7 @@
   align-items: center;
 }
 
-.user-profile h1, .edit-profile h2 {
+.user-profile h1, .profile-edit-profile h2 {
   color: #333;
   font-size: 24px;
   margin-bottom: 20px;
@@ -51,11 +51,11 @@
 
 
 
-.edit-profile form {
+.profile-edit-profile form {
   display: flex;
   flex-direction: column;
 }
-.edit-profile .NavLink{
+.profile-edit-profile .NavLink{
 
   display: flex;
   align-items: center;
@@ -81,7 +81,7 @@
 }
 
 
-.favorited {
+.profile-favorited {
   display: flex;
   flex-direction: column; /* Alinha o conteúdo em coluna */
   justify-content: center;
@@ -96,7 +96,7 @@
   margin-bottom: 20px; 
 }
 
-.name {
+.profile-name {
   color: white;
   font-family: 'Raleway', sans-serif;
   margin: 10px; /* Espaçamento abaixo do nome */
@@ -104,20 +104,20 @@
 
 }
 
-.fav-content {
+.profile-fav-content {
   display: flex;
   flex-direction: row; /* Alinha imagem e tipos em linha */
   align-items: left;
 }
 
-.favPokemons {
+.profile-favPokemons {
   width: 130px;
   border: 3px rgb(0, 0, 0) solid;
   background-color: #f7f7f7;
-  border-radius: 10px;
-  margin-right: 40px; 
+  border-radius: 20px;
+  margin-right: 40px;
 }
-/* .favPokemons {
+/* .profile-favPokemons {
   width: 130px;
   border: 3px rgb(0, 0, 0) solid;
   background-color: #f7f7f7;
@@ -128,7 +128,7 @@
   margin-right: 40px; 
 } */
 
-.fav-types {
+.profile-fav-types {
   display: flex;
   flex-direction: row; 
   gap: 35px;

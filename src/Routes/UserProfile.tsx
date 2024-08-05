@@ -3,7 +3,7 @@ import axios from 'axios';
 import '../Styles/UserProfile.css';
 import Img from '../Imgs/fire.png';
 import { NavLink } from 'react-router-dom';
-
+import magikarp from '../Imgs/magikarp.png'
 interface User {
   name: string;
   email: string;
@@ -72,20 +72,20 @@ const UserProfile = () => {
 
             </div>
             <button>Upload new avatar</button>
-
+            <img src={magikarp} alt="" />
           </div>
         ) : (
           <p>Usuário não encontrado.</p>
         )}
       </div>
-      <div className="edit-profile">
+      <div className="profile-edit-profile">
         <h2>Favorites</h2>
         {tresPrimeirosPokemons.map((pokemon, index) => (
-          <div className='favorited' key={index}>
-            <h4 className='name'>{pokemon.name}</h4>
-            <div className='fav-content'>
-              <img className='favPokemons' src={pokemon.img} alt={pokemon.name} />
-              <div className='fav-types'>
+          <div className='profile-favorited' key={index}>
+            <h4 className='profile-name'>{pokemon.name}</h4>
+            <div className='profile-fav-content'>
+              <img className='profile-favPokemons' src={pokemon.img} alt={pokemon.name} />
+              <div className='profile-fav-types'>
                 {pokemon.types.map((type, i) => (
                   <img
                     key={i}

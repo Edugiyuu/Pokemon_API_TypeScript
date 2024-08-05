@@ -11,9 +11,14 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { red } from '@mui/material/colors';
 import '../Styles/SideBar.css'
+import { createTheme, ThemeProvider} from '@mui/material';
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
-
+const theme = createTheme({
+  typography: {
+    fontFamily: 'Rubik',
+  },
+});
 export default function AnchorTemporaryDrawer() {
   const [state, setState] = React.useState({
     top: false,
@@ -49,6 +54,7 @@ export default function AnchorTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
       margin={1}
     >
+      <ThemeProvider theme={theme}>
       <List>
        
           <ListItem  >
@@ -61,14 +67,14 @@ export default function AnchorTemporaryDrawer() {
           <ListItem>
           
             <Link to={`/register`}>
-              <ListItemText id='SideBar'  primary={"Register"} />
+              <ListItemText id='SideBar' primary={"Register"} />
             </Link>
             
           </ListItem>
           <ListItem>
           
             <Link to={`/login`}>
-              <ListItemText id='SideBar' primary={"Log In"} />
+              <ListItemText id='SideBar' primary={"Log In"} style={{fontFamily:'Rubik'}} />
             </Link>
             
           </ListItem>
@@ -81,6 +87,7 @@ export default function AnchorTemporaryDrawer() {
             
           </ListItem>
       </List>
+      </ThemeProvider>
       <Divider />
       <Link to={`/login`} onClick={handleLogin}>
         <ListItemText  id='SideBar' primary={"Log out"} />

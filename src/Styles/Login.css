@@ -1,3 +1,7 @@
+*{
+    font-family: Rubik;
+}
+
 .Login {
     display: flex;
     flex-direction: row;

@@ -16,9 +16,6 @@ interface PokemonPages {
 }
 
 //------------------------------------------
-interface Sprites {
-    other: OtherSprites | null;
-}
 
 interface PokemonType {
   slot: number;
@@ -26,24 +23,44 @@ interface PokemonType {
 }
 
 interface PokemonDetails {
-  sprites: Sprites;
   types: PokemonType[];
 }
-
-interface OtherSprites{
-    "official-artwork": OfficialArtworkSprites ;
+/* interface Sprites {
+  other: OtherSprites;
 }
 
-interface OfficialArtworkSprites {
+interface OtherSprites {
+  home:{
     front_default: string;
-    front_shiny: string;
   }
+}
 
+interface Ability {
+  ability: {
+    name: string;
+    url: string;
+  };
+}
+
+interface Type {
+  type: {
+    name: string;
+    url: string;
+  };
+}
+
+interface OtherThings {
+  name: string;
+  sprites: Sprites;
+  abilities: Ability[];
+  types: Type[];
+
+}
+ */
 const Pokemons = () => {
   const [pokemonName, setPokemonName] = useState<PokemonPages>();
-  const [pokemonImg, setPokemonImg] = useState<Sprites>();
+/*   const [pokemonImg, setPokemonImg] = useState<OtherThings>(); */
   const [pokemonType, setPokemonType] = useState<PokemonDetails>();
-  const [pokemonNome, setPokemonNome] = useState("");
   const [pokemonTotal, setPokemonTotal] = useState(20);
  
   
@@ -58,15 +75,15 @@ const Pokemons = () => {
   }, [pokemonTotal]);
   
   useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNome}`)
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
       .then((response) => response.json())
       .then((parsedResponse) => {
         console.log(parsedResponse);
-        setPokemonImg(parsedResponse.sprites);
+        //setPokemonImg(parsedResponse);
         setPokemonType(parsedResponse.types)
       })
       .catch((error) => console.error("Error", error));
-  }, [pokemonNome]);
+  }, []);
 
   function verMais() {
     setPokemonTotal(pokemonTotal + 10);
@@ -112,7 +129,7 @@ const Pokemons = () => {
             <div className="Pokemon-buttons">
               
               {pokemonName.results.map((pokemon) => (
-                <NavLink key={pokemon.name} className={"Pokemon-Link"} to={`/pokemon/${pokemon.name}`}>{pokemon.name}</NavLink>
+                  <NavLink key={pokemon.name} className={"Pokemon-Link"} to={`/pokemon/${pokemon.name}`}>{pokemon.name}</NavLink>
               ))}
 {/*               {pokemonType?.types.map((pokemon) => (
               <p>{pokemon.type.name}</p>
@@ -123,7 +140,6 @@ const Pokemons = () => {
           
       <br></br>
       <button onClick={verMais}>Ver mais</button>
-      <NavLink to={`/pokemon/${pokemonNome}`}>{pokemonNome}</NavLink>
     </div>
     </div>
   );
