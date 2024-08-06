@@ -164,8 +164,9 @@ app.post('/auth/login', async (req, res) => {
   }
   
   // Checar se a senha é igual ao que o usuario passou
-  const checkPassword = bcrypt.compare(password, user.password);
-  //se for igual
+  const checkPassword = await bcrypt.compare(password, user.password);
+  
+  //se não for igual
   if (!checkPassword) {
     return res.status(422).json({ msg: 'Senha inválida' });
   }

@@ -12,7 +12,8 @@ import Stack from '@mui/material/Stack';
 import { red } from '@mui/material/colors';
 import '../Styles/SideBar.css'
 import { createTheme, ThemeProvider} from '@mui/material';
-
+import stars from "../Imgs/Icons/stars.png"
+import register from "../Imgs/Icons/register.png"
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 const theme = createTheme({
   typography: {
@@ -56,18 +57,34 @@ export default function AnchorTemporaryDrawer() {
     >
       <ThemeProvider theme={theme}>
       <List>
+       <ListItem>
+            <Link to={`/profile`}>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+              <ListItemText id='SideBar' primary={"User Profile"} />
+                <Avatar sx={{ bgcolor: red[500], width: '30px', height: '30px',marginLeft:'10px' }}></Avatar>
+                
+              </div>
+            </Link>
        
+       </ListItem>
           <ListItem  >
-          
+
             <Link to={`pokemon/favorites`}>
-              <ListItemText id='SideBar' primary={"Favorites"} />
+
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <ListItemText id="SideBar" primary={"Favorites"} />
+                <img src={stars} style={{ width: '40px',marginLeft:'10px' }} alt="Stars" />
+              </div>
             </Link>
             
           </ListItem>
           <ListItem>
           
             <Link to={`/register`}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
               <ListItemText id='SideBar' primary={"Register"} />
+              <img src={register} style={{ width: '30px',marginLeft:'10px' }}/>
+              </div>
             </Link>
             
           </ListItem>
@@ -81,19 +98,17 @@ export default function AnchorTemporaryDrawer() {
 
           <ListItem>
           
-            <Link to={`/profile`}>
-              <ListItemText id='SideBar' primary={"User Profile"} />
-            </Link>
+            
             
           </ListItem>
       </List>
-      </ThemeProvider>
+      
       <Divider />
       <Link to={`/login`} onClick={handleLogin}>
         <ListItemText  id='SideBar' primary={"Log out"} />
       </Link>
        
-        
+      </ThemeProvider>
    
     </Box>
   );
@@ -105,7 +120,7 @@ export default function AnchorTemporaryDrawer() {
         <React.Fragment key={anchor} >
           <Button onClick={toggleDrawer(anchor, true)}>{
             <Stack direction="row" spacing={2}>
-              <Avatar sx={{ bgcolor: red[500] }}>P</Avatar>
+              <Avatar sx={{ bgcolor: red[500] }}></Avatar>
             </Stack>}</Button>
           <Drawer
             anchor={anchor}

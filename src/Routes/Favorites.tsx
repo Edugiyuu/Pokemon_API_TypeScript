@@ -9,6 +9,7 @@ interface Favorites {
 }
 const Favorites = () => {
   const [userFavorites, setUserFavorites] = useState<Favorites[]>([]);
+  const pokemonTypes = ['fire', 'water', 'grass', 'electric', 'ice', 'fighting'];
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -37,7 +38,14 @@ const Favorites = () => {
   return (
     <div>
       <h2>Favoritos:</h2>
+      <select >
+        <option value="">Todos os Tipos</option>
+        {pokemonTypes.map((type, index) => (
+          <option key={index}>{type}</option>
+        ))}
+      </select>
       <div className='allFavorites'>
+      
       {userFavorites.map((pokemon, index) => (
           <div className='favorited' style={{
             backgroundColor: `var(--background-${pokemon.types[0]})`,
