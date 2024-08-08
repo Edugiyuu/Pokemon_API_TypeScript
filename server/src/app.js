@@ -2,10 +2,10 @@ import dotenv from 'dotenv';
 import express from "express";
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-import User from './models/User.js';
+import User from '../src/models/User.js';
 import jwt from "jsonwebtoken";
 import nodemailer from 'nodemailer'
-import favorites from './routes/favorites.js'
+import favorites from '../src/routes/favorites.js'
 import cors from 'cors';
 
 dotenv.config();
