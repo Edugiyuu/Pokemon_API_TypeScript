@@ -5,8 +5,10 @@ import bcrypt from "bcrypt";
 import User from '../src/models/User.js';
 import jwt from "jsonwebtoken";
 import nodemailer from 'nodemailer'
-import favorites from '../src/routes/favorites.js'
+import favoritesRoutes from './routes/favoritesRoutes.js'
+//import nodemailerRoutes from './routes/nodemailerRoutes.js';
 import cors from 'cors';
+import { checkToken } from './middleware/checkToken.js';
 
 dotenv.config();
 
@@ -15,14 +17,22 @@ console.log('DB_PASS:', process.env.DB_PASS);
 console.log('SECRET', process.env.SECRET);
 
 const app = express();
-app.use(favorites);
+app.use(favoritesRoutes);
+//app.use(nodemailerRoutes)
 
 //só por vias das duvidas..
 app.use(express.json());
 //-----------------
 //Rota publica
 app.use(cors());
+
+//ATENÇÃO EDU
+// aqui o nodeMailer funciona normalmente
+// mas criando o controller e routes ele simplismente não funciona
+// da um erro chamado Error: Missing credentials for "PLAIN"
+// só que não faz sentido
 const transporter = nodemailer.createTransport({
+
   service: 'gmail',
   auth: {
     user: process.env.GMAIL_USER,
@@ -52,6 +62,7 @@ app.post('/send-email', (req, res) => {
     res.status(200).json({ message: 'E-mail enviado!', info });
   });
 });
+
 app.get("/", (req, res) => {
   res.status(200).json({ msg: "Bem vindo a API!" });
 });
@@ -69,35 +80,6 @@ app.get("/user/:id",checkToken,async(req,res)=>{
   //retorna os dados do user
   res.status(200).json({user})
 })
-
-export function checkToken(req, res, next) {
-  //verifica se tem autorização
- 
-  //se o 'authorization' não existir no metodo get,post etc.. O authHeader vai ser undefined
-  //mas se existir vai ser "Bearer fj10e28d123dj"(o token)
-  const authHeader = req.headers['authorization'];
-  /* console.log(authHeader); */
-  //só não entendi pq aparece 2 tokens
-  //e aqui ele divide o Bearer e o token deixando eles separados e pegando só o token na posição 1
-  const token = authHeader.split(" ")[1];
-  /* const token = authHeader && authHeader.split(" ")[1]; */
-//verifica se o token é valido
-  if (!token) {
-    return res.status(401).json({ msg: 'Acesso negado.' });
-  }
-  
-  try {
-    const secret = process.env.SECRET;
-    //verifica se o token é valido e assinado com o secret
-    const decoded = jwt.verify(token, secret);
-    
-    // armazena os dados decodificados na requisição
-    req.token = decoded;
-    next();
-  } catch (error) {
-    res.status(400).json({ msg: 'Token inválido'});
-  }
-}
 
 
 app.post('/auth/register', async (req, res) => {
