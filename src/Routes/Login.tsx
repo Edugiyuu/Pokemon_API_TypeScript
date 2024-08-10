@@ -28,9 +28,7 @@ const Login = () => {
         email: email,
         password: password
       });
-      if (password) {
-        
-      }
+      //se deu tudo certo..
       if (response.status === 200) {
         setApproved(true);
         console.log('Login aprovado:', response.data);
@@ -60,7 +58,6 @@ const Login = () => {
       <img className="Char" src={Hilda} alt="" />
       <img className="Char2" src={GreenAndCynthia} alt="" />
       <Container maxWidth="xs">
-        <CssBaseline />
         <Box
           sx={{
             mt: 6,

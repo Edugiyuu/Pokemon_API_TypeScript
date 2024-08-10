@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { NavLink } from "react-router-dom";
-import TemporaryDrawer from './SideBar'
-
+import SideBar from './SideBar'
+import '../Styles/MenuUp.css'
 
 function MenuUp() {
 
@@ -27,7 +27,7 @@ function MenuUp() {
       <NavLink className={"NavLink"} to={`/pokemon/berrys`}>
         Berrys
       </NavLink>
-      <TemporaryDrawer></TemporaryDrawer>
+      <SideBar></SideBar>
     </div>
   );
 }

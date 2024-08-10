@@ -1,14 +1,13 @@
 import dotenv from 'dotenv';
 import express from "express";
 import mongoose from "mongoose";
-import bcrypt from "bcrypt";
-import User from '../src/models/User.js';
-import jwt from "jsonwebtoken";
 import nodemailer from 'nodemailer'
 import favoritesRoutes from './routes/favoritesRoutes.js'
+import userIdRoutes from './routes/userIdRoutes.js'
+import authRoutes from './routes/authRoutes.js'
 //import nodemailerRoutes from './routes/nodemailerRoutes.js';
 import cors from 'cors';
-import { checkToken } from './middleware/checkToken.js';
+
 
 dotenv.config();
 
@@ -18,6 +17,8 @@ console.log('SECRET', process.env.SECRET);
 
 const app = express();
 app.use(favoritesRoutes);
+app.use(userIdRoutes)
+app.use(authRoutes)
 //app.use(nodemailerRoutes)
 
 //só por vias das duvidas..
@@ -43,7 +44,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-
 app.post('/send-email', (req, res) => {
   const { to, subject, text } = req.body;
 
@@ -65,114 +65,6 @@ app.post('/send-email', (req, res) => {
 
 app.get("/", (req, res) => {
   res.status(200).json({ msg: "Bem vindo a API!" });
-});
-
-//Rota Privada
-app.get("/user/:id",checkToken,async(req,res)=>{
-  const id = req.params.id
-  //check if user exists
-  //pega o id do usuario, e pega os dados menos a senha
-  const user = await User.findById(id,'-password')
-  //verifica se o usuario não existe
-  if (!user) {
-    return res.status(404).json({msg:'Usuario não encontrado'})
-  }
-  //retorna os dados do user
-  res.status(200).json({user})
-})
-
-
-app.post('/auth/register', async (req, res) => {
-  const { name, email, password } = req.body;
-  //validação
-  //se não ter nome..
-  if (!name) {
-    return res.status(422).json({ msg: 'O nome é obrigatorio' });
-  }
-  //se não ter email..
-  if (!email) {
-    return res.status(422).json({ msg: 'O email é obrigatorio' });
-  }
-  //se não ter senha..
-  if (!password) {
-    return res.status(422).json({ msg: 'A senha é obrigatorio' });
-  }
-  //verifica se o email que o usuario colocou já existe
-  const userExists = await User.findOne({email:email})
-  //se o email do usuario já existe
-  if(userExists){
-    return res.status(422).json({ msg: 'Use outro email' });
-  }
- 
-  //quanto maior o valor do genSalt mais tempo ele leva mas ele é mais seguro
-  const salt = await bcrypt.genSalt(12)
-  //se eu não passar o salt aqui ele vai gerar um salt aleatorio
-  const passwordHash = await bcrypt.hash(password,salt)
-
-  const user = new User({
-    name,
-    email,
-    password:passwordHash,
-    //name = nome do usuario
-    //email = email do usuario
-    //password = senha do usuario + salt (valor aleatorio) + criptocrafado junto
-  })
-  try{
-    await user.save()
-    res.status(201).json({msg: 'usuario criado'})
-    
-  } catch(error){
-    res.status(500).json({msg:'erro no servidor'})
-  }
-});
-
-//Login user
-app.post('/auth/login', async (req, res) => {
-  const { email, password } = req.body;
-  
-  // Validação
-  if (!email) {
-    return res.status(422).json({ msg: 'O email é obrigatório' });
-  }
-  if (!password) {
-    return res.status(422).json({ msg: 'A senha é obrigatória' });
-  }
-  
-  // Checar se o usuário existe
-  const user = await User.findOne({ email: email });
-  
-  if (!user) {
-    return res.status(422).json({ msg: 'Usuário não encontrado' });
-  }
-  
-  // Checar se a senha é igual ao que o usuario passou
-  const checkPassword = await bcrypt.compare(password, user.password);
-  
-  //se não for igual
-  if (!checkPassword) {
-    return res.status(422).json({ msg: 'Senha inválida' });
-  }
-  
-  try {
-    //pega o secret em .env
-    const secret = process.env.SECRET;
-    //o token ficaria tipo assim https://jwt.io/
-    const token = jwt.sign(
-      //aqui seria o PAYLOAD
-      { id: user._id },
-      //e aqui seria VERIFY SIGNATURE
-      secret
-    );
-    
-    res.status(200).json({
-      msg: 'Autenticação feita com sucesso',
-      token,
-      id: user._id
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ msg: 'Algum erro ocorreu' });
-  }
 });
 
 const dbUser = process.env.DB_USER;

@@ -1,0 +1,22 @@
+.Menu{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-between;
+  font-weight: bold;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 9px;
+  padding: 15px;
+ margin: 0%;
+background-position: center;
+background-repeat: repeat-x;
+background-color: rgb(216, 40, 40);
+    
+}
+
+.Menu :hover{
+    animation-name: fonteAnim;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    text-decoration: underline;
+  }

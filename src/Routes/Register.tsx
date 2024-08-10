@@ -56,7 +56,6 @@ const Register = () => {
       <img className="Char" src={Prof} alt="" />
       <img className="Char2" src={ProfAndChild} alt="" />
       <Container maxWidth="xs">
-        <CssBaseline />
         <Box
           sx={{
             mt: 6,

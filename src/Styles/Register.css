@@ -1,6 +1,4 @@
-.Menu{
-    margin-top: 10px;
-}
+
 
 .Register {
     display: flex;
@@ -43,7 +41,5 @@
 #AvatarIcon{
     display: none;
 }
-.Menu{
-    margin-top: 0px;
-}
+
 }
