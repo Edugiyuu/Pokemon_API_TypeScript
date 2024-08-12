@@ -110,7 +110,7 @@ const Pokemons = () => {
             ]}
             wrapper="span"
             speed={30}
-            style={{fontFamily: "Raleway",fontSize: '2em',fontWeight: 'bold', display: 'inline-block',margin:'20px'}}
+            style={{fontFamily: "Rubik",fontSize: '2em',fontWeight: 'bold', display: 'inline-block',margin:'20px'}}
             repeat={Infinity}
           />
             

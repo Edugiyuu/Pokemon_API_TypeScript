@@ -65,10 +65,10 @@ const UserProfile = () => {
             <h2>{user.name}</h2>
             <p>{user.email}</p>
             <div className="stats">
-              <div className="stat">
+            
 
                 <p>Algo</p>
-              </div>
+             
 
             </div>
             <button>Upload new avatar</button>

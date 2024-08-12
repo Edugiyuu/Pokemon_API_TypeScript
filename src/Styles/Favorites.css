@@ -28,15 +28,7 @@
     --img-debuff: url('../Imgs/Backgrounds/debuff.png');
     --img-buff: url('../Imgs/Backgrounds/buff.png');
   }
-.user-profile, .edit-profile {
-    background-color: #f7f7f7;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    width: 45%;
-    margin: 10px auto;
-    align-items: center;
-  }
+
   
   /* Layout para dispositivos móveis */
   .allFavorites {

@@ -28,23 +28,18 @@ export default function AnchorTemporaryDrawer() {
     right: false,
   });
 
+  function handleLogin() {
+    localStorage.removeItem("token")
+    localStorage.removeItem("userId")
+  }
+
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
-    (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === 'keydown' &&
-        ((event as React.KeyboardEvent).key === 'Tab' ||
-          (event as React.KeyboardEvent).key === 'Shift')
-      ) {
-        return;
-      }
-
+    //(event: React.KeyboardEvent | React.MouseEvent) => {
+    () => {
+      
       setState({ ...state, [anchor]: open });
     };
-    function handleLogin() {
-      localStorage.removeItem("token")
-      localStorage.removeItem("userId")
-    }
 
   const list = (anchor: Anchor) => (
     <Box

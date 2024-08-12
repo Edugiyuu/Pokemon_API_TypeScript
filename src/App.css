@@ -15,14 +15,14 @@ html {
     Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   --font-size: 1.2rem;
   --color: rgb(190, 30, 19);
-  --color-light: #adf;
   --color-dark: rgb(0, 0, 0);
   --radius: 0.2rem;
 }
 
 body {
-  margin: 0.7rem;
+  margin-top: 120px;
   animation: corDeFundo 2s infinite;
+  font-family: Rubik;
 }
 
 body,
@@ -32,7 +32,35 @@ button {
   font-size: var(--font-size);
   font-family: var(--font);
 }
+:root {
+  --cor-de-fundo: rgb(216, 40, 40);
+  --cor-de-fundo-2: #f0f0f0;
+  
+  --clr-white2: rgb(255, 255, 255);
+  --text-color: #000000; 
+  --background-color: #ffffff;
+  --box-shadow-color:lightblue;
+}
 
+.dark-mode {
+  --cor-de-fundo: rgb(216, 40, 40);
+  --cor-de-fundo-2:rgb(43, 43, 43);
+  
+  --clr-white2: #1d1d1d;
+  --text-color: #ffffff; 
+  --background-color: #272727;
+  --box-shadow-color:#494949;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font);
+}
+
+* button{
+  color: var(--text-color);
+}
 h1,
 h2,
 h3 {
@@ -75,8 +103,8 @@ input:focus,
 textarea:focus {
   outline: none;
   border-color: var(--color);
-  background: white;
-  box-shadow: 0 0 0 3px var(--color-light);
+  background:  var(--clr-white);
+
 }
 
 button {
@@ -85,15 +113,10 @@ button {
   border-radius: var(--radius);
   transition: 0.1s;
   background: var(--cor-de-fundo);
-  color: var(--color-dark);
+  
   padding: 0.8rem 1.6rem;
 }
 
-
-
-button:active {
-  box-shadow: 0 0 0 3px var(--color), 0 0 0 4px var(--color);
-}
 
 button:disabled {
   opacity: 0.5;
@@ -117,7 +140,7 @@ hr {
   animation-fill-mode: forwards;
 }
 .Pokemon-buttons button{
-  box-shadow: 5px 5px lightblue;
+  box-shadow: 5px 5px var(--box-shadow-color);
 }
 
 .Pokemon-buttons button {
@@ -125,11 +148,11 @@ hr {
     width: 35%; 
 }
 .Pokemon-Link {
-  box-shadow: 5px 5px lightblue;
+  box-shadow: 5px 5px var(--box-shadow-color);
   margin: 0.5rem;
   width: 35%;
   background-color: var(--cor-de-fundo);
-  color: rgb(0, 0, 0);
+  color: var(--text-color);
   padding-left:28px;
   padding-right:28px;
   padding-bottom: 13px;
@@ -139,7 +162,7 @@ hr {
   font-family: Rubik;
 }
 #Pokemon-Link {
-  box-shadow: 5px 5px lightblue;
+  box-shadow: 5px 5px var(--box-shadow-color);
   margin: 0.5rem;
   width: 35%;
 
@@ -213,24 +236,23 @@ hr {
     
   }
   .pesquisar input{
-    box-shadow: 10px 10px lightblue;
+    box-shadow: 10px 10px var(--box-shadow-color);
+  
   }
   .pesquisar button{
-    box-shadow: 10px 10px lightblue;
+    box-shadow: 10px 10px var(--box-shadow-color);
+    margin-left: 20px;
     
   }
   .pesquisar ::placeholder{
     font-size: 15px;
   }
-  .pesquisar button{
-    margin-left: 20px;
-    
-  }
 
 .active{
-  border: 2px solid rgb(255, 255, 255);
-  border-radius: 10px;
+  border-bottom: 2px solid rgb(58, 58, 58);
+width: 200px;
   padding: 6px;
+
 }
 .active:hover{
 
@@ -241,12 +263,12 @@ hr {
 }
 
 .NavLink{
-    background: url(../Imgs/pokeball2.png);
-    /*background-repeat: no-repeat;
-    */background-position: center;
+    text-align: start;
+    background-position: center;
     background-repeat: repeat-x;
-    background-color: rgb(216, 40, 40);
-    color: rgb(255, 255, 255);
+    
+    color: var(--clr-black);
+    background-color:var(--cor-de-fundo);
     padding-left:28px;
     padding-right:28px;
     padding-bottom: 13px;
@@ -442,11 +464,7 @@ hr {
     align-items: center;
     justify-content: center; 
     font-weight: bold;
-    border: 2px solid rgb(0, 0, 0);
-    border-radius: 9px;
-    padding: 5px;
-    margin-left: 0px;
-    margin-right: 0px;
-    box-shadow: 0px 0px lightblue;
+    padding: 0;
+    margin: 0px;
   }
 }
