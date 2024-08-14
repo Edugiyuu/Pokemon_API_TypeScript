@@ -3,10 +3,9 @@
   flex-direction: row;
   align-items: center;
   justify-content:space-between;
-  font-weight: bold;
-  border-bottom: 2px solid rgb(37, 37, 37);
+  border-bottom: 1px solid var(--border-color);
   width: 100%;
-  padding: 6px;
+  padding: 7px;
   padding-left: 30px;
   padding-right: 30px;
   background-position: center;

@@ -20,8 +20,7 @@ html {
 }
 
 body {
-  margin-top: 120px;
-  animation: corDeFundo 2s infinite;
+  margin-top: 130px;
   font-family: Rubik;
 }
 
@@ -35,9 +34,10 @@ button {
 :root {
   --cor-de-fundo: rgb(216, 40, 40);
   --cor-de-fundo-2: #f0f0f0;
-  
+  --border-color: rgb(212, 212, 212);
+
   --clr-white2: rgb(255, 255, 255);
-  --text-color: #000000; 
+  --text-color: #000000;
   --background-color: #ffffff;
   --box-shadow-color:lightblue;
 }
@@ -45,7 +45,7 @@ button {
 .dark-mode {
   --cor-de-fundo: rgb(216, 40, 40);
   --cor-de-fundo-2:rgb(43, 43, 43);
-  
+  --border-color: rgb(46, 46, 46);
   --clr-white2: #1d1d1d;
   --text-color: #ffffff; 
   --background-color: #272727;
@@ -206,7 +206,7 @@ hr {
     background-color: #fff; 
     padding: 40px;
     border-radius: 10px;
-    border: 3px solid black;
+    
     align-items: center;
     text-align: center;
   }

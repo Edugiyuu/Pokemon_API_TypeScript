@@ -34,7 +34,7 @@ function MenuUp() {
         <img src={LogoDark} width={'200px'} />
       )}
       <UserSideBar />
-      <button onClick={toggleTheme}>Mudar tema</button>
+      <button onClick={toggleTheme}>Mudar</button>
     </div>
   );
 }

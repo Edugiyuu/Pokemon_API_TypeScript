@@ -45,11 +45,7 @@ const NaturePage = () => {
     setPokemonNature(pokemonNature);
     changeBoolean();
   }
-
-  const [procurarPokemon, setProcurarPokemon] = useState('');
-  const naturePesquisada= () => {
-    window.location.href = `/pokemon/nature/${procurarPokemon.toLowerCase()}`;
-  };
+ 
   return (
     
     <div>
@@ -73,13 +69,6 @@ const NaturePage = () => {
             style={{ fontFamily: "Raleway", fontSize: '2em', fontWeight: 'bold', display: 'inline-block', margin: '20px' }}
             repeat={Infinity}
           />
-
-            <div className="pesquisar">
-              <input placeholder="Escreva a nature em ingles :)" type="text"value={procurarPokemon} onChange={(pokemonProcurado) => setProcurarPokemon(pokemonProcurado.target.value)}/>
-              <button  onClick={naturePesquisada}>
-                Procurar
-              </button>
-            </div>
             
         </div>
         

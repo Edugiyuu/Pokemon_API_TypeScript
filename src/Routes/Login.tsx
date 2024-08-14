@@ -1,6 +1,5 @@
 import {
   Container,
-  CssBaseline,
   Box,
   Avatar,
   Typography,
@@ -19,8 +18,6 @@ import '../Styles/Login.css'
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [approved, setApproved] = useState(false);
-
 
   const handleLogin = async () => {
     try {
@@ -30,7 +27,7 @@ const Login = () => {
       });
       //se deu tudo certo..
       if (response.status === 200) {
-        setApproved(true);
+   
         console.log('Login aprovado:', response.data);
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('userId', response.data.id);
@@ -43,11 +40,11 @@ const Login = () => {
         });
         console.log('email enviado');
       } else {
-        setApproved(false);
+      
         console.log('Login recusado');
       }
     } catch (error) {
-      setApproved(false);
+     
       console.error('Erro ao fazer login:', error);
     }
   };

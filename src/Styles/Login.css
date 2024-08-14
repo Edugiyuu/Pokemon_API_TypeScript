@@ -16,7 +16,6 @@
 .Char2 {
     display: none;
 }
-
 @media only screen and (max-width: 950px) {
     .Char {
         width: 250px;

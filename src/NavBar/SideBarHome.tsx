@@ -10,7 +10,6 @@ import { NavLink } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import '../Styles/SideBar.css'
 import { createTheme, ThemeProvider } from '@mui/material';
-import stars from "../Imgs/Icons/stars.png"
 import Bar from "../Imgs/Icons/MenuBar.png"
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
@@ -58,7 +57,6 @@ export default function AnchorTemporaryDrawer() {
 
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <ListItemText id="SideBar" primary={"Home"} />
-                <img src={stars} style={{ width: '40px', marginLeft: '10px' }} alt="Stars" />
               </div>
             </NavLink>
 
