@@ -2,12 +2,8 @@ import dotenv from 'dotenv';
 import express from "express";
 import mongoose from "mongoose";
 import nodemailer from 'nodemailer'
-import favoritesRoutes from './routes/favoritesRoutes.js'
-import userIdRoutes from './routes/userIdRoutes.js'
-import authRoutes from './routes/authRoutes.js'
-import nodemailerRoutes from './routes/nodemailerRoutes.js';
+import routes from "./routes/routes.js"
 import cors from 'cors';
-
 
 dotenv.config();
 
@@ -16,9 +12,9 @@ console.log('DB_PASS:', process.env.DB_PASS);
 console.log('SECRET', process.env.SECRET);
 
 const app = express();
-app.use(favoritesRoutes);
-app.use(userIdRoutes)
-app.use(authRoutes)
+app.use(routes)
+
+
 //app.use(nodemailerRoutes)
 
 //só por vias das duvidas..
@@ -61,8 +57,8 @@ app.post('/send-email', (req, res) => {
     }
     res.status(200).json({ message: 'E-mail enviado!', info });
   });
-});
- */
+}); */
+
 app.get("/", (req, res) => {
   res.status(200).json({ msg: "Bem vindo a API!" });
 });

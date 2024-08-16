@@ -116,7 +116,8 @@ export default function AnchorTemporaryDrawer() {
           <Button onClick={toggleDrawer(anchor, true)}>{
             <Stack direction="row" spacing={2}>
               <Avatar sx={{ bgcolor: red[500] }}></Avatar>
-            </Stack>}</Button>
+            </Stack>}
+            </Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}

@@ -4,6 +4,9 @@ import '../Styles/MenuUp.css';
 import SideBarHome from './SideBarHome';
 import Logo from '../Imgs/Icons/Logo.png';
 import LogoDark from '../Imgs/Icons/LogoDark.png';
+import DarkMode from '../Imgs/Icons/DarkMode.png';
+import LigthMode from '../Imgs/Icons/LigthMode.png';
+
 function MenuUp() {
   //se exisir o darkMode retorna true se não existir retorna false
   const [darkMode, setDarkMode] = useState(localStorage.getItem('darkMode') === 'true');
@@ -34,7 +37,13 @@ function MenuUp() {
         <img src={LogoDark} width={'200px'} />
       )}
       <UserSideBar />
-      <button onClick={toggleTheme}>Mudar</button>
+      {!darkMode && (
+         <img className="DarkModeIcon" src={DarkMode} width={'50px'} onClick={toggleTheme}></img>
+      )}
+      {darkMode && (
+        <img className="LigthModeIcon" src={LigthMode} width={'50px'} onClick={toggleTheme} ></img>
+      )}
+
     </div>
   );
 }

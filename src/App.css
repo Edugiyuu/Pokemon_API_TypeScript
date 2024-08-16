@@ -457,14 +457,4 @@ width: 200px;
     }
   }
 
-  @media only screen and (max-width: 750px) {
-  .Menu {
-    display: flex;
-    flex-wrap: wrap; 
-    align-items: center;
-    justify-content: center; 
-    font-weight: bold;
-    padding: 0;
-    margin: 0px;
-  }
-}
+  
