@@ -115,7 +115,7 @@ export default function AnchorTemporaryDrawer() {
         <React.Fragment key={anchor} >
           <Button onClick={toggleDrawer(anchor, true)}>{
             <Stack direction="row" spacing={2}>
-              <Avatar sx={{ bgcolor: red[500] }}></Avatar>
+              <Avatar sx={{ bgcolor: "var(--cor-de-fundo)" }}></Avatar>
             </Stack>}
             </Button>
           <Drawer

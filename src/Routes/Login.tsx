@@ -5,7 +5,6 @@ import {
   Typography,
   TextField,
   Button,
-  Grid,
 } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -63,50 +62,70 @@ const Login = () => {
             alignItems: "center",
           }}
         >
-          <Avatar id='AvatarIcon' sx={{ m: 1, bgcolor: "primary.light" }}>
-            <h2>L</h2>
+          <Avatar id='AvatarIcon' sx={{ m: 1, bgcolor: "var(--cor-de-fundo)" }}>
+            <h3>L</h3>
           </Avatar>
           <Typography variant="h5">Login</Typography>
           <Box sx={{ mt: 1 }}>
             <TextField
-              margin="normal"
+              label="Email"
+              color="info"
+              type='email'
+              focused
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
               required
               fullWidth
-              id="email"
-              label="Email"
-              name="email"
-              autoFocus
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              sx={{
+                '.MuiInputBase-input': {
+                  color: 'var(--text-color)',
+                  backgroundColor:'var(--background-color)' // Cor do texto dentro do input
+                },  
+              }}
             />
-
+       
             <TextField
               margin="normal"
               required
               fullWidth
+              focused
               id="password"
-              name="senha"
               label="Senha"
               type="password"
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
+              sx={{
+                '.MuiInputBase-input': {
+                  color: 'var(--text-color)',
+                  backgroundColor:'var(--background-color)' // Cor do texto dentro do input
+                },  
+              }}
             />
 
             <Button
+              className="LoginButton"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{
+                mt: 3,
+                mb: 2,
+                color:'var(--text-color)',
+                backgroundColor: "var(--cor-de-fundo)",
+                ":hover": {
+                  backgroundColor: "rgb(243, 60, 60)", 
+                }
+              }}
               onClick={handleLogin}
             >
               Login
             </Button>
-            <Grid container justifyContent={"flex-end"}>
-              <Grid item>
-                <Link to="/register">Não tem uma Conta? Clique aqui</Link>
-              </Grid>
-            </Grid>
+            <div className="ForgotAndRegister">
+              <Link className="RegisterButton" to="/register">Não tem uma Conta? Clique aqui</Link>
+              <Link className="RegisterButton" to="/forgotPassWord">Esqueceu a senha? Clique aqui</Link>
+            </div>
+            
           </Box>
         </Box>
       </Container>

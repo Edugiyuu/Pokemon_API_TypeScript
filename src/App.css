@@ -32,7 +32,7 @@ button {
   font-family: var(--font);
 }
 :root {
-  --cor-de-fundo: rgb(216, 40, 40);
+  --cor-de-fundo: rgb(243, 48, 48);
   --cor-de-fundo-2: #f0f0f0;
   --border-color: rgb(212, 212, 212);
 
@@ -43,7 +43,7 @@ button {
 }
 
 .dark-mode {
-  --cor-de-fundo: rgb(216, 40, 40);
+  --cor-de-fundo: rgb(231, 37, 37);
   --cor-de-fundo-2:rgb(43, 43, 43);
   --border-color: rgb(46, 46, 46);
   --clr-white2: #1d1d1d;
@@ -289,13 +289,12 @@ width: 200px;
   background-size: 50px;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: rgb(216, 40, 40);
+  background-color: var(--cor-de-fundo);
   color: white;
 }
 
 
 :root {
-    --cor-de-fundo: rgb(216, 40, 40); /* Cor padrão para o fundo */
     
     --clr-black: #1c1c1c;
     --clr-gray: #ececec;

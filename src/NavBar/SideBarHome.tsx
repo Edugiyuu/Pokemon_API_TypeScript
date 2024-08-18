@@ -53,7 +53,7 @@ export default function AnchorTemporaryDrawer() {
         <List>
           <ListItem  >
 
-            <NavLink className={'NavLink'} to={`/`}>
+            <NavLink className={'BarHomeButtons'} to={`/`}>
 
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <ListItemText id="SideBar" primary={"Home"} />
@@ -63,7 +63,7 @@ export default function AnchorTemporaryDrawer() {
           </ListItem>
           <ListItem>
 
-            <NavLink className={'NavLink'} to={`/pokemon/types`}>
+            <NavLink className={'BarHomeButtons'} to={`/pokemon/types`}>
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <ListItemText id='SideBar' primary={"Types"} />
                 {/* <img src={register} style={{ width: '30px', marginLeft: '10px' }} /> */}
@@ -74,7 +74,7 @@ export default function AnchorTemporaryDrawer() {
 
           <ListItem>
 
-            <NavLink className={'NavLink'} to={`/pokemon/nature`}>
+            <NavLink className={'BarHomeButtons'} to={`/pokemon/nature`}>
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <ListItemText id='SideBar' primary={"Nature"} />
                 {/* <img src={register} style={{ width: '30px', marginLeft: '10px' }} /> */}
@@ -85,7 +85,7 @@ export default function AnchorTemporaryDrawer() {
 
           <ListItem>
 
-            <NavLink className={'NavLink'} to={`/pokemon/stats`}>
+            <NavLink className={'BarHomeButtons'} to={`/pokemon/stats`}>
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <ListItemText id='SideBar' primary={"Stats"} />
                 {/* <img src={register} style={{ width: '30px', marginLeft: '10px' }} /> */}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useParams } from 'react-router-dom';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Tooltip } from 'recharts'; 'recharts';
-import favoriteCard from '../Imgs/CardFrames/favorited.png'
+/* import favoriteCard from '../Imgs/CardFrames/favorited.png' */
 import '../Styles/PokemonInfo.css';
 import axios from "axios";
 

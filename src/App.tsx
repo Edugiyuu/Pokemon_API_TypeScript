@@ -6,7 +6,6 @@ import Types from './Home/Types';
 import Natures from './Home/Natures';
 import PokemonInfo from './Routes/PokemonInfo';
 import TypeInfo from './Routes/TypeInfo';
-import NatureInfo from './Routes/NatureInfo';
 import Stats from './Home/Stats';
 import Register from './Routes/Register'
 import Login from './Routes/Login'
@@ -30,7 +29,6 @@ const App = () => {
 
        <Route path="pokemon/:name" element={<PokemonInfo />} />
        <Route path="pokemon/type/:type" element={<TypeInfo/>}/>
-       <Route path="pokemon/nature/:nature" element={<NatureInfo/>}/>
        <Route path="pokemon/favorites" element={<Favorites/>}/>
 
        <Route path="register" element={<Register/>}/>
