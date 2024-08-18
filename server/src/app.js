@@ -28,7 +28,7 @@ app.use(cors());
 // mas criando o controller e routes ele simplismente não funciona
 // da um erro chamado Error: Missing credentials for "PLAIN"
 // só que não faz sentido
-/* const transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
 
   service: 'gmail',
   auth: {
@@ -57,7 +57,7 @@ app.post('/send-email', (req, res) => {
     }
     res.status(200).json({ message: 'E-mail enviado!', info });
   });
-}); */
+});
 
 
 

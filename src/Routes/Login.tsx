@@ -37,6 +37,13 @@ const Login = () => {
           text: "Login feito",
           html: "<strong>Hello world?</strong>",
         });
+        //não funciona
+        /* await axios.post('http://localhost:3000/send-email', {
+          to: {email},
+          subject: "Login",
+          text: "Login feito",
+          html: "<strong>Hello world?</strong>",
+        }); */
         console.log('email enviado');
       } else {
       

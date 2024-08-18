@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer';
+/* import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -29,3 +29,4 @@ export const postEmail = async (req, res) => {
         res.status(200).json({ message: 'E-mail enviado!', info });
     });
 };
+ */

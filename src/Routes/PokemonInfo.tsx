@@ -3,7 +3,10 @@ import { Link, NavLink, useParams } from 'react-router-dom';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Tooltip } from 'recharts'; 'recharts';
 /* import favoriteCard from '../Imgs/CardFrames/favorited.png' */
 import '../Styles/PokemonInfo.css';
+import Snackbar from '@mui/material/Snackbar';
+import { Alert } from "@mui/material";
 import axios from "axios";
+import useOpenClose from "../Hooks/useOpenClose";
 
 interface Stats {
   base_stat: number;
@@ -83,7 +86,17 @@ function PokemonInfo() {
   const [pokemonInfo, setPokemonInfo] = useState<Stats[] & OtherThings & Sprites>();
   const [pokemonSpecies, setPokemonSpecies] = useState<PokemonSpecies>();
   
-/*   const [sprite, setSprite] = useState('front_default'); */
+  /* pop-ups */
+  const [addFavorite, changeBooleanAddFavorite] = useOpenClose(false);
+  const [addFavoriteError, changeBooleanaddFavoriteError] = useOpenClose(false);
+
+  const [removeFavorite, changeBooleanRemove] = useOpenClose(false);
+
+  const [LoginError, changeBooleanLoginError] = useOpenClose(false);
+  /* -------- */
+
+  const token = localStorage.getItem('token');
+  const userId = localStorage.getItem('userId');
   const params = useParams();
 
   useEffect(() => {
@@ -91,7 +104,6 @@ function PokemonInfo() {
       .then((response) => response.json())
       .then((parsedResponse) => {
         setPokemonInfo(parsedResponse);
-
       })
       .catch((error) => console.error("Error", error));
   }, []);
@@ -108,8 +120,6 @@ function PokemonInfo() {
   
   const handleFavorites = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const userId = localStorage.getItem('userId');
       const favoritePokemon = params.name;
   
       if (!token || !userId || !favoritePokemon) {
@@ -127,10 +137,16 @@ function PokemonInfo() {
           }
         }
       );
-  
+      changeBooleanAddFavorite()
       console.log(response.data);
     } catch (error) {
       console.error('Erro ao atualizar favoritos:', error);
+      if (!userId && !token) {
+        changeBooleanLoginError()
+      }else{
+        changeBooleanaddFavoriteError()
+      }
+      
     }
   };
   
@@ -150,7 +166,7 @@ function PokemonInfo() {
           }
         }
       );
-  
+      changeBooleanRemove()
       console.log(response.data);  
     } catch (error) {
       console.error('Erro ao remover', error);
@@ -165,6 +181,58 @@ function PokemonInfo() {
 
   return (
     <>
+      {/* Usuario não logado */}
+      <Snackbar
+        open={LoginError}
+        autoHideDuration={6000}
+        onClose={changeBooleanLoginError}
+        anchorOrigin={{ "vertical": 'top', "horizontal": "center" }}
+      >
+        <Alert severity="info" sx={{ fontSize: '1.15rem', paddingRight: '20px' }}>
+          Erro: Faça seu Login Primeiro!
+        </Alert>
+      </Snackbar>
+      {/* ---------------------------- */}
+
+    {/* AddFavorites & FavoritesError */}
+      <Snackbar
+        open={addFavorite}
+        autoHideDuration={6000}
+        onClose={changeBooleanAddFavorite}
+        anchorOrigin={{ "vertical":'top', "horizontal":"center" }}
+      >
+        <Alert severity="success" sx={{ fontSize: '1.25rem', paddingRight: '20px'}}>
+          Adicionado aos Favoritos!
+        </Alert>
+      </Snackbar>
+
+      <Snackbar
+        open={addFavoriteError}
+        autoHideDuration={6000}
+        onClose={changeBooleanaddFavoriteError}
+        anchorOrigin={{ "vertical":'top', "horizontal":"center" }}
+      >
+        <Alert severity="error" sx={{ fontSize: '1.15rem', paddingRight: '20px'}}>
+         Erro: Esse Pokemon já está nos seus favoritos!
+        </Alert>
+      </Snackbar>
+
+
+      {/*---------------------------------------------------------------------*/}
+
+      <Snackbar
+        open={removeFavorite}
+        autoHideDuration={6000}
+        onClose={changeBooleanRemove}
+        anchorOrigin={{ "vertical":'top', "horizontal":"center" }}
+      >
+        <Alert severity="success"  sx={{ fontSize: '1.25rem', paddingRight: '20px' }}>
+          Removido dos Favoritos!
+        </Alert>
+      </Snackbar>
+
+
+      {/* ------------------------------------------------------ */}
       {pokemonInfo && (
         <div>
           <div style={{
@@ -191,7 +259,7 @@ function PokemonInfo() {
             <img style={{ 
       transform: 'scale(1.6)', 
 
-    }} src={pokemonInfo.sprites.versions["generation-viii"].icons.front_default} alt="" />
+    }} src={pokemonInfo.sprites.versions["generation-viii"].icons.front_default}/>
           </div>
 
           <div className="Infos">
