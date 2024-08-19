@@ -137,7 +137,33 @@
   margin: 0.3rem;
   
 }
+.MiniPokemon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:center;
+  gap: 30px;
+  border: 3px var(--cor-de-fundo-3) solid;
+  background-color: var(--cor-de-fundo);
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 2%;
+  
+}
 
+.MiniPokemon h1 {
+  margin: 0;
+  color: white;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.MiniPokemon img {
+  transform: scale(1.6);
+
+  margin-bottom: 40px;
+
+}
 @keyframes example {
   0%   {margin-left: 250px;}
   100% {}

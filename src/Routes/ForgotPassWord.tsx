@@ -1,13 +1,11 @@
 import {
     Container,
     Box,
-    Avatar,
     Typography,
     TextField,
     Button,
   } from "@mui/material";
   import { useState } from "react";
-  import { Link } from "react-router-dom";
   import Hilda from '../Imgs/Caracters/Hilda.png'
   import CoolGuy from '../Imgs/Caracters/CoolGuy.png'
   import GreenAndCynthia from '../Imgs/Caracters/Green&Cynthia.png'

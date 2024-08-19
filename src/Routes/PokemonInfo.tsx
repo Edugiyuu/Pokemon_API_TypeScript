@@ -3,10 +3,9 @@ import { Link, NavLink, useParams } from 'react-router-dom';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Tooltip } from 'recharts'; 'recharts';
 /* import favoriteCard from '../Imgs/CardFrames/favorited.png' */
 import '../Styles/PokemonInfo.css';
-import Snackbar from '@mui/material/Snackbar';
-import { Alert } from "@mui/material";
 import axios from "axios";
 import useOpenClose from "../Hooks/useOpenClose";
+import PopUps from './PopUps';
 
 interface Stats {
   base_stat: number;
@@ -88,9 +87,10 @@ function PokemonInfo() {
   
   /* pop-ups */
   const [addFavorite, changeBooleanAddFavorite] = useOpenClose(false);
-  const [addFavoriteError, changeBooleanaddFavoriteError] = useOpenClose(false);
+  const [addFavoriteError, changeBooleanAddFavoriteError] = useOpenClose(false);
 
   const [removeFavorite, changeBooleanRemove] = useOpenClose(false);
+  const [removeFavoriteError, changeBooleanRemoveFavoriteError] = useOpenClose(false);
 
   const [LoginError, changeBooleanLoginError] = useOpenClose(false);
   /* -------- */
@@ -144,7 +144,7 @@ function PokemonInfo() {
       if (!userId && !token) {
         changeBooleanLoginError()
       }else{
-        changeBooleanaddFavoriteError()
+        changeBooleanAddFavoriteError()
       }
       
     }
@@ -169,6 +169,12 @@ function PokemonInfo() {
       changeBooleanRemove()
       console.log(response.data);  
     } catch (error) {
+      if (!userId && !token) {
+      changeBooleanLoginError()
+    }else{
+      changeBooleanRemoveFavoriteError()
+    }
+      
       console.error('Erro ao remover', error);
     }
   };
@@ -181,85 +187,29 @@ function PokemonInfo() {
 
   return (
     <>
-      {/* Usuario não logado */}
-      <Snackbar
-        open={LoginError}
-        autoHideDuration={6000}
-        onClose={changeBooleanLoginError}
-        anchorOrigin={{ "vertical": 'top', "horizontal": "center" }}
-      >
-        <Alert severity="info" sx={{ fontSize: '1.15rem', paddingRight: '20px' }}>
-          Erro: Faça seu Login Primeiro!
-        </Alert>
-      </Snackbar>
-      {/* ---------------------------- */}
-
-    {/* AddFavorites & FavoritesError */}
-      <Snackbar
-        open={addFavorite}
-        autoHideDuration={6000}
-        onClose={changeBooleanAddFavorite}
-        anchorOrigin={{ "vertical":'top', "horizontal":"center" }}
-      >
-        <Alert severity="success" sx={{ fontSize: '1.25rem', paddingRight: '20px'}}>
-          Adicionado aos Favoritos!
-        </Alert>
-      </Snackbar>
-
-      <Snackbar
-        open={addFavoriteError}
-        autoHideDuration={6000}
-        onClose={changeBooleanaddFavoriteError}
-        anchorOrigin={{ "vertical":'top', "horizontal":"center" }}
-      >
-        <Alert severity="error" sx={{ fontSize: '1.15rem', paddingRight: '20px'}}>
-         Erro: Esse Pokemon já está nos seus favoritos!
-        </Alert>
-      </Snackbar>
-
-
-      {/*---------------------------------------------------------------------*/}
-
-      <Snackbar
-        open={removeFavorite}
-        autoHideDuration={6000}
-        onClose={changeBooleanRemove}
-        anchorOrigin={{ "vertical":'top', "horizontal":"center" }}
-      >
-        <Alert severity="success"  sx={{ fontSize: '1.25rem', paddingRight: '20px' }}>
-          Removido dos Favoritos!
-        </Alert>
-      </Snackbar>
-
-
-      {/* ------------------------------------------------------ */}
+    <PopUps
+        LoginError={LoginError}
+        addFavorite={addFavorite}
+        addFavoriteError={addFavoriteError}
+        removeFavorite={removeFavorite}
+        removeFavoriteError={removeFavoriteError}
+        changeBooleanLoginError={changeBooleanLoginError}
+        changeBooleanAddFavorite={changeBooleanAddFavorite}
+        changeBooleanAddFavoriteError={changeBooleanAddFavoriteError}
+        changeBooleanRemove={changeBooleanRemove}
+        changeBooleanRemoveFavoriteError={changeBooleanRemoveFavoriteError}
+      />
       {pokemonInfo && (
         <div>
-          <div style={{
-            marginLeft: '20px',
-            marginRight: '20px',
-            marginBottom:'10px',
-            marginTop:'10px',
-          /*   backgroundColor: `${pokemonSpecies?.color.name}`, */
-            display: 'flex',
-            borderRadius: '9px',
-            border:'2px solid rgb(0, 0, 0)',
-            justifyContent: 'start', alignItems: 'start',
-         
-          }}>
-            
-            <h1 style={{
-              marginRight: '30px',
-              marginLeft: '50px',
-            
-              letterSpacing: '4px', 
-            }}>
-              {pokemonInfo?.name}
-            </h1>
-            <img style={{ 
-      transform: 'scale(1.6)', 
+          <div className="MiniPokemon">
 
-    }} src={pokemonInfo.sprites.versions["generation-viii"].icons.front_default}/>
+            <h1>
+           {/* Pega a primeira letra e transforma em Maiuscula e concatena com o resto sem a primeira letra */}
+            {pokemonInfo?.name[0].toUpperCase() + pokemonInfo?.name.slice(1)}
+            </h1>
+            <img style={{
+              transform: 'scale(1.6)',
+            }} src={pokemonInfo.sprites.versions["generation-viii"].icons.front_default} />
           </div>
 
           <div className="Infos">

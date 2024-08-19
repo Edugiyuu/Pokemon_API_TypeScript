@@ -122,6 +122,7 @@ export default function AnchorTemporaryDrawer() {
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
+            sx={{ ".MuiDrawer-paper": { backgroundColor: "var(--background-color)" }, ".MuiListItemText-primary": { color: "var(--text-color)" } }}
           >
             {list(anchor)}
           </Drawer>
