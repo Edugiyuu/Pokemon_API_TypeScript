@@ -1,0 +1,41 @@
+.about {
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+}
+
+.text {
+    display: flex;
+    align-items:self-start;
+    flex-direction: column;
+}
+.myLinks{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+   width: 400px;
+    background-color: rgb(46, 46, 46);
+    border-radius: 10px;
+    padding: 10px;
+    
+  
+}
+.gitHubIcon{
+    
+    width: 60px;
+}
+
+@media only screen and (max-width: 870px) {
+    .about {
+        display: flex;
+        align-items: center;
+        justify-content:space-around;
+        flex-direction: column;
+      }
+      .text {
+        display: flex;
+        align-items:center;
+        flex-direction: column;
+    }
+}

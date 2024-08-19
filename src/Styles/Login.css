@@ -44,8 +44,8 @@
 .ForgotAndRegister {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Opcional: alinha os itens à esquerda */
-  gap: 8px; /* Espaçamento entre os links */
+  align-items: flex-start; 
+  gap: 8px; 
 }
 
 .RegisterButton {
