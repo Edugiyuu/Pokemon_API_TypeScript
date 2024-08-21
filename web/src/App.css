@@ -269,7 +269,7 @@ width: 200px;
     background-position: center;
     background-repeat: repeat-x;
     
-    color: var(--clr-black);
+    color: var(--text-color);
     background-color:var(--cor-de-fundo);
     padding-left:28px;
     padding-right:28px;

@@ -1,0 +1,99 @@
+*{
+    font-weight: normal;
+}
+
+.about {
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+  border-top: 1px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+.text {
+    display: flex;
+    align-items:center;
+    flex-direction: column;
+    animation-name: Aparecer;
+    animation-duration: 0.3s;
+}
+.myLinks{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+   width: 400px;
+    background-color: rgb(46, 46, 46);
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid black;
+}
+.gitHubIcon{
+    width: 60px;
+}
+.sobreOProjeto{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 50px;
+    animation-name: Aparecer;
+    animation-duration: 0.3s;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.mobileChar{
+    display: none;
+}
+.img-container .Char {
+    width: 200px;
+    animation-name: Aparecer;
+    animation-duration: 0.3s;
+}
+.sobreOProjeto {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+.sobreOUsuario{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+@keyframes Aparecer {
+    0% {
+        transform: scale(0); 
+        opacity: 0; 
+    }
+
+    100% {
+        transform: scale(1); 
+        opacity: 1; 
+    }
+}
+
+
+@media only screen and (max-width: 900px) {
+    .about {
+        display: flex;
+        align-items: center;
+        justify-content:space-around;
+        flex-direction: column;
+      }
+      .text {
+        display: flex;
+        align-items:center;
+        flex-direction: column;
+    }
+    .mobileChar{
+        display: block;
+        width: 200px;
+    }
+    .img-container .Char{
+        display: none;
+    }
+}

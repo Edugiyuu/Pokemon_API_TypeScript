@@ -93,6 +93,16 @@ export default function AnchorTemporaryDrawer() {
             </NavLink>
 
           </ListItem>
+          <ListItem>
+
+            <NavLink className={'BarHomeButtons'} to={`/about`}>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <ListItemText id='SideBar' primary={"About"} />
+                {/* <img src={register} style={{ width: '30px', marginLeft: '10px' }} /> */}
+              </div>
+            </NavLink>
+
+          </ListItem>
         </List>
 
         <Divider />

@@ -1,4 +1,6 @@
-/* import nodemailer from 'nodemailer';
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -15,7 +17,7 @@ export const postEmail = async (req, res) => {
     const { to, subject, text } = req.body;
 
     const mailOptions = {
-        from: process.env.GMAIL_USER,
+        from: "nomemailtest@gmail.com",
         to: to,
         subject: subject,
         text: text,
@@ -29,4 +31,3 @@ export const postEmail = async (req, res) => {
         res.status(200).json({ message: 'E-mail enviado!', info });
     });
 };
- */

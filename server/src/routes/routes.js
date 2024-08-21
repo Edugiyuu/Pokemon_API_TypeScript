@@ -4,7 +4,7 @@ import { checkToken } from '../middleware/checkToken.js';
 import { postLogin, postRegister } from '../controller/authController.js';
 import { getUserId } from '../controller/userIdController.js';
 import { getFavorites, addFavorite, removeFavorite } from '../controller/favoritesController.js';
-/* import { postEmail} from '../controller/nodemailerController.js'; */
+import { postEmail} from '../controller/nodemailerController.js';
 import cors from 'cors';
 
 const router = express.Router();
@@ -28,6 +28,6 @@ router.delete('/user/:id/favorites', checkToken, removeFavorite);
 
 
 //--------------NodeMailer-------------------
-/* router.post('/send-email', postEmail); */
+router.post('/send-email', postEmail);
 //-------------------------------------------
 export default router;
