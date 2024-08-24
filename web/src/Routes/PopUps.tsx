@@ -31,11 +31,12 @@ function PopUps({
         {/* Se o usuario tentar fazer algo mas não estiver logado */}
         <Snackbar
           open={LoginError}
-          autoHideDuration={5000}
+          autoHideDuration={3000}
           onClose={changeBooleanLoginError}
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          
         >
-          <Alert severity="info" sx={{ fontSize: '1.25rem', paddingRight: '20px' }}>
+          <Alert className='PopUp' severity="info" sx={{ fontSize: '1.25rem', paddingRight: '20px' }}>
             Erro: Faça seu Login Primeiro para usar esse recurso
           </Alert>
         </Snackbar>
@@ -44,11 +45,11 @@ function PopUps({
         {/* Usuario adciona o pokemon aos Favoritos */}
         <Snackbar
           open={addFavorite}
-          autoHideDuration={5000}
+          autoHideDuration={3000}
           onClose={changeBooleanAddFavorite}
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         >
-          <Alert severity="success" sx={{ fontSize: '1.25rem', paddingRight: '20px' }}>
+          <Alert className='PopUp' severity="success" sx={{ fontSize: '1.25rem', paddingRight: '20px' }}>
             Adicionado aos Favoritos!
           </Alert>
         </Snackbar>
@@ -57,11 +58,11 @@ function PopUps({
         {/* Usuario já tem o pokemon nos favoritos */}
         <Snackbar
           open={addFavoriteError}
-          autoHideDuration={5000}
+          autoHideDuration={3000}
           onClose={changeBooleanAddFavoriteError}
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         >
-          <Alert severity="error" sx={{ fontSize: '1.25rem', paddingRight: '20px' }}>
+          <Alert className='PopUp' severity="error" sx={{ fontSize: '1.25rem', paddingRight: '20px' }}>
             Erro: Esse Pokémon já está nos seus favoritos!
           </Alert>
         </Snackbar>
@@ -70,11 +71,11 @@ function PopUps({
         {/* Usuario remove o pokemon dos favoritos */}
         <Snackbar
           open={removeFavorite}
-          autoHideDuration={5000}
+          autoHideDuration={3000}
           onClose={changeBooleanRemove}
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         >
-          <Alert severity="success" sx={{ fontSize: '1.25rem', paddingRight: '20px' }}>
+          <Alert className='PopUp' severity="success" sx={{ fontSize: '1.25rem', paddingRight: '20px' }}>
             Removido dos Favoritos!
           </Alert>
         </Snackbar>
@@ -83,11 +84,11 @@ function PopUps({
         {/* Usuario já tem o pokemon nos favoritos */}
         <Snackbar
           open={removeFavoriteError}
-          autoHideDuration={5000}
+          autoHideDuration={3000}
           onClose={changeBooleanRemoveFavoriteError}
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         >
-          <Alert severity="error" sx={{ fontSize: '1.25rem', paddingRight: '20px' }}>
+          <Alert className='PopUp' severity="error" sx={{ fontSize: '1.25rem', paddingRight: '20px' }}>
             Erro: Esse Pokemon não está nos seus favoritos!
           </Alert>
         </Snackbar>

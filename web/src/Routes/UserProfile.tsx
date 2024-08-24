@@ -3,7 +3,6 @@ import axios from 'axios';
 import '../Styles/UserProfile.css';
 import Img from '../Imgs/fire.png';
 import { NavLink } from 'react-router-dom';
-import magikarp from '../Imgs/magikarp.png'
 interface User {
   name: string;
   email: string;
@@ -66,13 +65,11 @@ const UserProfile = () => {
             <p>{user.email}</p>
             <div className="stats">
             
-
                 <p>Algo</p>
-             
 
             </div>
             <button>Upload new avatar</button>
-            <img src={magikarp} alt="" />
+            
           </div>
         ) : (
           <p>Usuário não encontrado.</p>
@@ -89,7 +86,6 @@ const UserProfile = () => {
                 {pokemon.types.map((type, i) => (
                   <img
                     key={i}
-                    style={{ width: '80px' }}
                     src={`https://raw.githubusercontent.com/partywhale/pokemon-type-icons/fcbe6978c61c359680bc07636c3f9bdc0f346b43/icons/${type}.svg`}
                     alt={type}
                   />

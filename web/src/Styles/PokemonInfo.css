@@ -173,19 +173,41 @@
   100% {}
 }
 @media only screen and (max-width: 750px) {
+  .PopUp{
+    margin-right: 380px;
+  }
+  .MiniPokemon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:center;
+  
+  border: 2px var(--cor-de-fundo-3) solid;
+  background-color: var(--cor-de-fundo);
+  width: 100%;
+  height: 5.5rem;
+  
+  border-radius: 10px;
+  
+  
+}
+
+.MiniPokemon h1 {
+  margin: 0;
+  color: white;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.MiniPokemon img {
+  transform: scale(1.6);
+
+  margin-bottom: 40px;
+
+}
   .Infos{
     display: flex;
     flex-direction: column;
-    box-shadow: 10px 10px lightblue;
-    justify-content: space-around;
-    align-items: center;
-    justify-self: center;
-    background-repeat:no-repeat;
-    background-size: 15rem;
-  
-    
-    margin: 0px;
-    
 }
 .img{
   display: flex;
@@ -196,7 +218,7 @@
   align-items: center;
   animation-name: example;
   animation-duration: 1s;
-   background: url('../Imgs/CardFrames/pokeball.png') no-repeat center center;
+  background: url('../Imgs/CardFrames/pokeball.png') no-repeat center center;
   background-color: transparent;
   background-size:contain;
 }

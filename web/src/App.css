@@ -457,5 +457,18 @@ width: 200px;
       margin: 30px;
     }
   }
+@media only screen and (max-width: 800px) {
+
+  .Pokemon-Link {
+    box-shadow: 5px 5px var(--box-shadow-color);
+    margin: 0.5rem;
+    width: 43%;
+  }
+  #Pokemon-Link{
+    box-shadow: 5px 5px var(--box-shadow-color);
+    margin: 0.5rem;
+    width: 43%;
+  }
+}
 
   

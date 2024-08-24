@@ -9,6 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { NavLink } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import '../Styles/SideBar.css'
+import '../Styles/MenuUp.css'
 import { createTheme, ThemeProvider } from '@mui/material';
 import Bar from "../Imgs/Icons/MenuBar.png"
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
@@ -120,8 +121,8 @@ export default function AnchorTemporaryDrawer() {
           <Button onClick={toggleDrawer(anchor, true)}>{
             <Stack direction="row" spacing={2}>
               <img
+                className='BarHome'
                 src={Bar}
-                style={{ width: "70px" }}
               />
             </Stack>}
             </Button>

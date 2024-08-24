@@ -31,10 +31,10 @@ function MenuUp() {
     <div className="Menu">
       <SideBarHome />
       {!darkMode && (
-        <img src={Logo} width={'200px'} />
+        <img className="PokeApi" src={Logo} />
       )}
       {darkMode && (
-        <img src={LogoDark} width={'200px'} />
+        <img className="PokeApi" src={LogoDark} />
       )}
       <UserSideBar />
       {!darkMode && (

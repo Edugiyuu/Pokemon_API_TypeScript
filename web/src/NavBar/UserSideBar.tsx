@@ -11,6 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { red } from '@mui/material/colors';
 import '../Styles/SideBar.css'
+import '../Styles/MenuUp.css'
 import { createTheme, ThemeProvider} from '@mui/material';
 import stars from "../Imgs/Icons/stars.png"
 import register from "../Imgs/Icons/register.png"
@@ -115,7 +116,7 @@ export default function AnchorTemporaryDrawer() {
         <React.Fragment key={anchor} >
           <Button onClick={toggleDrawer(anchor, true)}>{
             <Stack direction="row" spacing={2}>
-              <Avatar sx={{ bgcolor: "var(--cor-de-fundo)" }}></Avatar>
+              <Avatar className='AvatarHome' sx={{ bgcolor: "var(--cor-de-fundo)" }}></Avatar>
             </Stack>}
             </Button>
           <Drawer

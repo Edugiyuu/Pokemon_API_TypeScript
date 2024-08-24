@@ -78,7 +78,7 @@
 
 .profile-favorited {
   display: flex;
-  flex-direction: column; /* Alinha o conteúdo em coluna */
+  flex-direction: column; 
   justify-content: center;
   align-items: flex-start;
   max-width: auto;
@@ -94,14 +94,14 @@
 .profile-name {
   color: white;
   font-family: 'Raleway', sans-serif;
-  margin: 10px; /* Espaçamento abaixo do nome */
+  margin: 10px; 
   text-align: center;
 
 }
 
 .profile-fav-content {
   display: flex;
-  flex-direction: row; /* Alinha imagem e tipos em linha */
+  flex-direction: row; 
   align-items: left;
 }
 
@@ -127,4 +127,32 @@
   display: flex;
   flex-direction: row; 
   gap: 35px;
+
+}
+.profile-fav-types img {
+  width: 80px;
+
+}
+@media only screen and (max-width: 750px) {
+  .user-profile-container {
+    padding: 10px;
+  }
+
+  .user-profile, .profile-edit-profile {
+    padding: 15px;
+  }
+
+  .profile-fav-content {
+    flex-direction: column;
+    
+  }
+
+  .profile-favPokemons {
+    width: 100px;
+    margin: 0 auto 10px; 
+  }
+
+  .profile-fav-types img {
+    width: 40px; 
+  }
 }
