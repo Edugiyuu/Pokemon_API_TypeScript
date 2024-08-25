@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useParams } from 'react-router-dom';
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Tooltip } from 'recharts'; 'recharts';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Tooltip, ResponsiveContainer } from 'recharts'; 'recharts';
 /* import favoriteCard from '../Imgs/CardFrames/favorited.png' */
 import '../Styles/PokemonInfo.css';
 import axios from "axios";
@@ -221,11 +221,14 @@ function PokemonInfo() {
                 <button onClick={removeFavorites}>Tirar dos favoritos</button>
               </div>
             )}
+            <div className="Pokemon-Info">
+
+            
             {pokemonInfo.abilities && (
               <div className="ability">
                 <h2>Abilities:</h2>
                 {pokemonInfo.abilities.map((pokemon) => (
-                  <NavLink className={'NavLink2'} to={`/pokemon/ability/${pokemon.ability.name}`}>{pokemon.ability.name}</NavLink>
+                  <p>{pokemon.ability.name}</p>
                 ))}
               </div>
             )}
@@ -255,22 +258,25 @@ function PokemonInfo() {
                 <Link className={'NavLink2'} to={`/pokemon/${pokemonSpecies.evolves_from_species.name}`} >{pokemonSpecies.evolves_from_species.name}</Link>
               </div>
             )}
+            </div>
 
           </div>
 
           {pokemonInfo && (
 
-            <div className="stats">
+            <div className="stats" >
 
               <h2>Stats base:</h2>
 
-              <RadarChart width={750} height={400} data={data2}>
-                <PolarGrid />
-                <PolarAngleAxis dataKey="name" />
-                <PolarRadiusAxis />
-                <Radar name={`${params.name} Stats`} dataKey="base_stat" stroke="#74e448" fill="#50f058" fillOpacity={0.6} />
-                <Tooltip></Tooltip>
-              </RadarChart>
+              <ResponsiveContainer width="100%" height={400}>
+                <RadarChart data={data2}>
+                  <PolarGrid />
+                  <PolarAngleAxis dataKey="name" />
+                  <PolarRadiusAxis />
+                  <Radar name={`${params.name} Stats`} dataKey="base_stat" stroke="#74e448" fill="#50f058" fillOpacity={0.6} />
+                  <Tooltip />
+                </RadarChart>
+              </ResponsiveContainer>
             </div>
           )}
         </div>

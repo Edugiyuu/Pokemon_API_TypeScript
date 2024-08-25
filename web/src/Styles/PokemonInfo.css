@@ -1,13 +1,13 @@
 
 *{
-    font-family: "Rubik"
+    font-family: "Rubik";
 }
 
   h1,h2,button,p{
     font-family: "Rubik"
   }
 
-.Infos{
+.Infos, .Pokemon-Info{
     display: flex;
     flex-direction: row;
 
@@ -18,7 +18,7 @@
     margin-right: 20px;
     
     background: url(../Imgs/pokeball2.png);
-    background-size: 24rem;
+    
     background-position: center;
     background-repeat:no-repeat;
     padding: 15px;
@@ -172,10 +172,9 @@
   0%   {margin-top: 200px;}
   100% {}
 }
+
 @media only screen and (max-width: 750px) {
-  .PopUp{
-    margin-right: 380px;
-  }
+
   .MiniPokemon {
   display: flex;
   flex-direction: row;
@@ -188,8 +187,6 @@
   height: 5.5rem;
   
   border-radius: 10px;
-  
-  
 }
 
 .MiniPokemon h1 {
@@ -208,6 +205,39 @@
   .Infos{
     display: flex;
     flex-direction: column;
+}
+.Pokemon-Info{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ability, .Types,.habitat,.Evolução{
+  margin: 0px;
+  padding: 20px;
+
+  width: 400px;
+  max-width: 330px;
+  border-radius: 9px;
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  
+  font-weight: bold;
+  color: white;
+  background: url(../Imgs/pokeball.png);
+    background-size: 6rem;
+    background-position: center;
+    background-repeat:no-repeat;
+    background-color: rgb(65, 65, 65);
+}
+.StatsBaseBar{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+
 }
 .img{
   display: flex;

@@ -5,16 +5,21 @@ import {
   Typography,
   TextField,
   Button,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Hilda from '../Imgs/Caracters/Hilda.png'
 import CoolGuy from '../Imgs/Caracters/CoolGuy.png'
 import GreenAndCynthia from '../Imgs/Caracters/Green&Cynthia.png'
+import useOpenClose from "../Hooks/useOpenClose";
 import axios from "axios";
 import '../Styles/Login.css'
 
+
 const Login = () => {
+  const [LoginSucess, changeBooleanLoginSucess] = useOpenClose(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -30,20 +35,15 @@ const Login = () => {
         console.log('Login aprovado:', response.data);
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('userId', response.data.id);
+        
+        changeBooleanLoginSucess()
 
         await axios.post('http://localhost:3000/send-email', {
-          to: "edupaz077@gmail.com",
+          to: email,
           subject: "Login",
           text: "Login feito",
           html: "<strong>Hello world?</strong>",
         });
-        //não funciona
-        /* await axios.post('http://localhost:3000/send-email', {
-          to: {email},
-          subject: "Login",
-          text: "Login feito",
-          html: "<strong>Hello world?</strong>",
-        }); */
         console.log('email enviado');
       } else {
       
@@ -57,7 +57,19 @@ const Login = () => {
   
 
   return (
-    <div className="Login">   
+    
+    <div className="Login">
+     <Snackbar
+          open={LoginSucess}
+          autoHideDuration={3000}
+          onClose={changeBooleanLoginSucess}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+          
+        >
+          <Alert className='PopUp' sx={{ fontSize: '1.25rem', paddingRight: '20px' }}>
+            Login Feito!
+          </Alert>
+        </Snackbar>
       <img className="Char" src={Hilda} alt="" />
       <img className="Char2" src={GreenAndCynthia} alt="" />
       <Container maxWidth="xs">
@@ -86,7 +98,7 @@ const Login = () => {
               sx={{
                 '.MuiInputBase-input': {
                   color: 'var(--text-color)',
-                  backgroundColor:'var(--background-color)' // Cor do texto dentro do input
+                  backgroundColor:'var(--background-color)'
                 },  
               }}
             />
@@ -106,7 +118,7 @@ const Login = () => {
               sx={{
                 '.MuiInputBase-input': {
                   color: 'var(--text-color)',
-                  backgroundColor:'var(--background-color)' // Cor do texto dentro do input
+                  backgroundColor:'var(--background-color)'
                 },  
               }}
             />
