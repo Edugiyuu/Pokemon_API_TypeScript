@@ -17,7 +17,7 @@ export const postEmail = async (req, res) => {
     const { to, subject, text } = req.body;
 
     const mailOptions = {
-        from: "nomemailtest@gmail.com",
+        from: process.env.GMAIL_USER,
         to: to,
         subject: subject,
         text: text,

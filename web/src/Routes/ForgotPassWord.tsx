@@ -12,7 +12,7 @@ import {
   import axios from "axios";
   import '../Styles/Login.css'
   
-  const Login = () => {
+  const ForgotPassWord = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
   
@@ -25,12 +25,10 @@ import {
         //se deu tudo certo..
         if (response.status === 200) {
      
-          console.log('Login aprovado:', response.data);
-          localStorage.setItem('token', response.data.token);
-          localStorage.setItem('userId', response.data.id);
-  
+          console.log('Login', response.data);
+      
           await axios.post('http://localhost:3000/send-email', {
-            to: "edupaz077@gmail.com",
+            to: email,
             subject: "Login",
             text: "Login feito",
             html: "<strong>Hello world?</strong>",
@@ -70,7 +68,7 @@ import {
                 fullWidth
                 focused
                 id="password"
-                label="Senha"
+                label="Email"
                 type="password"
                 value={password}
                 onChange={(e) => {
@@ -99,7 +97,7 @@ import {
                 }}
                 onClick={handleLogin}
               >
-                Login
+                Mandar Codigo de verificação
               </Button>
               
               
@@ -111,4 +109,4 @@ import {
     );
   };
   
-  export default Login;
+  export default ForgotPassWord;
