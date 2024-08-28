@@ -12,15 +12,15 @@ import {
   import axios from "axios";
   import '../Styles/Login.css'
   
-  const ForgotPassWord = () => {
+  const NewPassword = () => {
     const [email, setEmail] = useState("");
-    
+    const [password, setPassword] = useState("");
   
     const handleLogin = async () => {
       try {
-        const response = await axios.post('http://localhost:3000/forgot-password', {
-          to: email,
-          
+        const response = await axios.post('http://localhost:3000/auth/login', {
+          email: email,
+          password: password
         });
         //se deu tudo certo..
         if (response.status === 200) {
@@ -29,8 +29,8 @@ import {
       
           await axios.post('http://localhost:3000/send-email', {
             to: email,
-            subject: "Esqueceu a senha?",
-            text: "Link aqui",
+            subject: "Login",
+            text: "Login feito",
             html: "<strong>Hello world?</strong>",
           });
           console.log('email enviado');
@@ -58,7 +58,7 @@ import {
               alignItems: "center",
             }}
           >
-            <Typography variant="h5">Esqueceu sua senha?</Typography>
+            <Typography variant="h5">Nova senha</Typography>
             <Box sx={{ mt: 1 }}>
         
          
@@ -67,17 +67,17 @@ import {
                 required
                 fullWidth
                 focused
-                id="email"
-                label="Email"
-                type="email"
-                value={email}
+                id="password"
+                label="Nova Senha"
+                type="password"
+                value={password}
                 onChange={(e) => {
-                  setEmail(e.target.value);
+                  setPassword(e.target.value);
                 }}
                 sx={{
                   '.MuiInputBase-input': {
                     color: 'var(--text-color)',
-                    backgroundColor:'var(--background-color)' // Cor do texto dentro do input
+                    backgroundColor:'var(--background-color)'
                   },  
                 }}
               />
@@ -109,4 +109,4 @@ import {
     );
   };
   
-  export default ForgotPassWord;
+  export default NewPassword;

@@ -20,6 +20,7 @@ import '../Styles/Login.css'
 
 const Login = () => {
   const [LoginSucess, changeBooleanLoginSucess] = useOpenClose(false);
+  const [LoginError, changeBooleanLoginError] = useOpenClose(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -37,7 +38,6 @@ const Login = () => {
         localStorage.setItem('userId', response.data.id);
         
         changeBooleanLoginSucess()
-
         await axios.post('http://localhost:3000/send-email', {
           to: email,
           subject: "Login",
@@ -45,12 +45,13 @@ const Login = () => {
           html: "<strong>Hello world?</strong>",
         });
         console.log('email enviado');
+        
       } else {
-      
+        
         console.log('Login recusado');
       }
     } catch (error) {
-     
+      changeBooleanLoginError()
       console.error('Erro ao fazer login:', error);
     }
   };
@@ -70,6 +71,19 @@ const Login = () => {
             Login Feito!
           </Alert>
         </Snackbar>
+        
+        <Snackbar
+          open={LoginError}
+          autoHideDuration={3000}
+          onClose={changeBooleanLoginError}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+          
+        >
+          <Alert className='PopUp' severity="error" sx={{ fontSize: '1.25rem', paddingRight: '20px' }}>
+            Erro: Senha ou Email incorretos
+          </Alert>
+        </Snackbar>
+
       <img className="Char" src={Hilda} alt="" />
       <img className="Char2" src={GreenAndCynthia} alt="" />
       <Container maxWidth="xs">
