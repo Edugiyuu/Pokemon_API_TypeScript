@@ -17,14 +17,14 @@ interface PokemonPages {
 
 //------------------------------------------
 
-interface PokemonType {
+/* interface PokemonType {
   slot: number;
   type: PokemonResult;
 }
 
 interface PokemonDetails {
   types: PokemonType[];
-}
+} */
 /* interface Sprites {
   other: OtherSprites;
 }
@@ -60,7 +60,7 @@ interface OtherThings {
 const Pokemons = () => {
   const [pokemonName, setPokemonName] = useState<PokemonPages>();
 /*   const [pokemonImg, setPokemonImg] = useState<OtherThings>(); */
-  const [pokemonType, setPokemonType] = useState<PokemonDetails>();
+ /*  const [pokemonType, setPokemonType] = useState<PokemonDetails>(); */
   const [pokemonTotal, setPokemonTotal] = useState(20);
  
   
@@ -80,7 +80,7 @@ const Pokemons = () => {
       .then((parsedResponse) => {
         console.log(parsedResponse);
         //setPokemonImg(parsedResponse);
-        setPokemonType(parsedResponse.types)
+      /*   setPokemonType(parsedResponse.types) */
       })
       .catch((error) => console.error("Error", error));
   }, []);

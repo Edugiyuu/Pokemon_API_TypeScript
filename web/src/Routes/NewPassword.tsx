@@ -13,13 +13,13 @@ import {
   import '../Styles/Login.css'
   
   const NewPassword = () => {
-    const [email, setEmail] = useState("");
+
     const [password, setPassword] = useState("");
   
     const handleLogin = async () => {
       try {
         const response = await axios.post('http://localhost:3000/auth/login', {
-          email: email,
+      
           password: password
         });
         //se deu tudo certo..
@@ -28,7 +28,7 @@ import {
           console.log('Login', response.data);
       
           await axios.post('http://localhost:3000/send-email', {
-            to: email,
+
             subject: "Login",
             text: "Login feito",
             html: "<strong>Hello world?</strong>",

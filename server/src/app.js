@@ -61,8 +61,8 @@ app.post('/send-email', (req, res) => {
  */
 
 
-app.get("/", (req, res) => {
-  res.status(200).json({ msg: "Bem vindo a API!" });
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
 });
 
 const dbUser = process.env.DB_USER;

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import "./App.css";
 import MenuUp from './NavBar/MenuUp';
 import Pokemons from './Home/Pokemons';
@@ -20,11 +20,12 @@ const App = () => {
   return (
    
     
-    <BrowserRouter >
+    <BrowserRouter basename="/Pokemon_API_TypeScript">
     <MenuUp></MenuUp>
    
     <Routes>
-      <Route path="/" element={<Pokemons/>} />
+    <Route path="/" element={<Navigate to="/pokemons" />} />
+      <Route path="pokemons" element={<Pokemons/>} />
       <Route path="pokemon/types/" element={<Types/>}/>
        <Route path="pokemon/nature/" element={<Natures/>}/>
        <Route path="pokemon/stats/" element={<Stats/>}/>
